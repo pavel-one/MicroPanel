@@ -23,6 +23,8 @@
 1. `php artisan ide-helper:generate`
 1. `php artisan ide-helper:generate`
 1. `php artisan ide-helper:meta`
+1. `npm install`
+1. `npm run dev`
 
 ## IDE Helper-commands
 
@@ -30,6 +32,7 @@
 
 - `php artisan ide-helper:models -W` - Добавить автоматическую генерацию phpDoc для моделей
 - `php artisan ide-helper:generate` - Генерация ide_helper файла
+- `composer run-script post-update-cmd` - Обновить все
 
 ## Правила мерджа
 
@@ -74,6 +77,7 @@
 - Соблюдаем правильное именование сетеров и гетеров
 - В именовании сервисов, моделей, переменных используем CamelCase а не SnakeCase
 - Для контроллеров ресурсов обязательно ставим флаг resource `php artisan make:controller ModelNameController --resource`
+- Если добавляется новый конфиг, добавляем его и в .env.example
 
 ## Другое
 
