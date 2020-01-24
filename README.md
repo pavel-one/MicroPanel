@@ -19,7 +19,7 @@
 1. `cp .env.example .env`
 1. `php artisan key:generate`
 1. В .env меняем то что нужно поменять, следуем комментариям
-1. `php artisan `
+1. `php artisan migrate --seed`
 
 ## Правила мерджа
 
