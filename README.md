@@ -20,13 +20,25 @@
 1. `php artisan key:generate`
 1. В .env меняем то что нужно поменять, следуем комментариям
 1. `php artisan migrate --seed`
+1. `php artisan ide-helper:generate`
+1. `php artisan ide-helper:generate`
+1. `php artisan ide-helper:meta`
+1. `npm install`
+1. `npm run dev`
+
+## IDE Helper-commands
+
+Это специальное дополнение, дабы помочь IDE понимать абстракции и фасады laravel
+
+- `php artisan ide-helper:models -W` - Добавить автоматическую генерацию phpDoc для моделей
+- `php artisan ide-helper:generate` - Генерация ide_helper файла
+- `composer run-script post-update-cmd` - Обновить все
 
 ## Правила мерджа
 
 - Каждый человек работает в отдельной ветке которая отталкивается от мастера
 - Название ветки должно быть максимально понятной и обозначать тот фронт работ, что вы взяли
 - Мерджить в мастер категорически запрещено
-- Если ветка относится к issue ее название начинается вот так: `#24 BranchName`, где #24 - это id issue
 - Каждый коммит относящийся к issue должен начинаться с id issue `#24 CommitName`
 - Если мы создаем новую модель, мы обязательно делаем к ней сидеров
 
@@ -64,6 +76,8 @@
 - Если нам нужно изменить существующую таблицу, мы не меняем миграцию, а создаем отдельную
 - Соблюдаем правильное именование сетеров и гетеров
 - В именовании сервисов, моделей, переменных используем CamelCase а не SnakeCase
+- Для контроллеров ресурсов обязательно ставим флаг resource `php artisan make:controller ModelNameController --resource`
+- Если добавляется новый конфиг, добавляем его и в .env.example
 
 ## Другое
 

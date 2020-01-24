@@ -43,6 +43,11 @@ Available commands:
   event:clear          Clear all cached events and listeners
   event:generate       Generate the missing events and listeners based on registration
   event:list           List the application's events and listeners
+ ide-helper
+  ide-helper:eloquent  Add \Eloquent helper to \Eloquent\Model
+  ide-helper:generate  Generate a new IDE Helper file.
+  ide-helper:meta      Generate metadata for PhpStorm
+  ide-helper:models    Generate autocompletion for models
  key
   key:generate         Set the application key
  make
