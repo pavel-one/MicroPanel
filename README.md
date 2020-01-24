@@ -20,6 +20,16 @@
 1. `php artisan key:generate`
 1. В .env меняем то что нужно поменять, следуем комментариям
 1. `php artisan migrate --seed`
+1. `php artisan ide-helper:generate`
+1. `php artisan ide-helper:generate`
+1. `php artisan ide-helper:meta`
+
+## IDE Helper-commands
+
+Это специальное дополнение, дабы помочь IDE понимать абстракции и фасады laravel
+
+- `php artisan ide-helper:models -W` - Добавить автоматическую генерацию phpDoc для моделей
+- `php artisan ide-helper:generate` - Генерация ide_helper файла
 
 ## Правила мерджа
 
