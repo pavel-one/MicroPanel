@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'name' => 'Administrator',
                 'email' => 'pavel@orendat.ru',
                 'password' => bcrypt('admin'),
+                'sudo' => true,
             ]);
         }
 
@@ -32,6 +33,7 @@ class UserSeeder extends Seeder
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'password' => bcrypt($faker->password),
+                'sudo' => false
             ]);
         }
 
