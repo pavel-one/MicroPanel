@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', 'PageController@index')->name('index');
+Route::get('/', 'PageController@index')->middleware('guest')->name('index');
 Route::get('/home', 'HomeController@index'); //TODO: DEL
 
 
@@ -12,7 +12,7 @@ Route::group(['prefix' => 'login', 'middleware' => 'guest'], static function () 
     Route::get('register', 'LoginController@registerView');
     Route::post('register', 'LoginController@register')->name('register');
 
-    Route::get('logout', 'LoginController@index')->name('logout'); //TODO: Processing
+    Route::post('logout', 'LoginController@logout')->name('logout');
 });
 
 //Панель управления

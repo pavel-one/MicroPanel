@@ -95,7 +95,12 @@ class LoginController extends Controller
         Auth::loginUsingId($created->id, true); //Авто авторизация
 
         return redirect()->route('Dashboard index');
-
-
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return route('index');
+    }
+
 }
