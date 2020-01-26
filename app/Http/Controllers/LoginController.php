@@ -100,7 +100,7 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return route('index');
+        return redirect()->route('index');
     }
 
 }
