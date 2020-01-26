@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Doctrine\DBAL\Query\QueryException;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
@@ -29,7 +27,6 @@ class LoginController extends Controller
      */
     public function authenticate(Request $request)
     {
-        //TODO: Add validation
         $username = $request->get('username');
         $password = $request->get('password');
         $remember = $request->get('remember');
@@ -43,7 +40,7 @@ class LoginController extends Controller
             return redirect()->route('Dashboard index');
         }
 
-        $this->log('Ошибка авторизации', self::LOG_CHANNEL, $request->toArray());
+        $this->log(__('auth.AuthUserProcess'), self::LOG_CHANNEL, $request->toArray());
 
         return back()->withErrors(['auth' => __('auth.failed')]);
     }
@@ -56,9 +53,14 @@ class LoginController extends Controller
         return view('login.register');
     }
 
+    /**
+     * Регистрация пользователя
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function register(Request $request)
     {
-        //TODO: Add validation
         $username = $request->get('username');
         $email = $request->get('email');
         $name = $request->get('name');
@@ -66,6 +68,8 @@ class LoginController extends Controller
 
         $this->validate($request, [
             'username' => 'required|unique:users',
+            'email' => 'required|email|unique:users',
+            'name' => 'required',
             'password' => 'required',
         ]);
 
@@ -79,18 +83,16 @@ class LoginController extends Controller
                 'password' => bcrypt($password),
             ]);
         } catch (\Exception $e) {
-            //Что то работает TODO: Протестировать
-            \Log::critical('', '');
-            \Log::alert("$e: Request: \n" . print_r($request->toArray(), true));
-            return response('Редирект на ошибку');
+            $this->log(__('auth.CreateUserProcess'), self::LOG_CHANNEL, array_merge([
+                'msg' => __('auth.UnknownErrorCreateUser')
+            ], $request->toArray()));
+
+            return back()->withErrors([
+                'register' => __('auth.UnknownErrorCreateUser')
+            ]);
         }
 
-        if (!$created instanceof User) {
-            \Log::alert("Ошибка создания пользователя: Request: \n" . print_r($request->toArray(), true));
-            return response('Error created user')->json();
-        }
-
-        Auth::loginUsingId($created->id, true);
+        Auth::loginUsingId($created->id, true); //Авто авторизация
 
         return redirect()->route('Dashboard index');
 

@@ -8,6 +8,11 @@
                     <div class="card-header">Регистрация</div>
 
                     <div class="card-body">
+                        @error('register')
+                        <div class="alert alert-danger" style="margin-bottom: 30px" role="alert">
+                            {{ $message }}
+                        </div>
+                        @enderror
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
