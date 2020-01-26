@@ -8,6 +8,11 @@
                     <div class="card-header">Вход</div>
 
                     <div class="card-body">
+                        @error('auth')
+                        <div class="alert alert-danger" style="margin-bottom: 30px" role="alert">
+                            {{ $message }}
+                        </div>
+                        @enderror
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
@@ -18,9 +23,9 @@
                                 <div class="col-md-6">
                                     <input id="username" type="username"
                                            class="form-control @error('username') is-invalid @enderror" name="username"
-                                           value="{{ old('username') }}" required autocomplete="username" autofocus>
+                                           value="{{ old('username') }}" autocomplete="username" autofocus>
 
-                                    @error('email')
+                                    @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -35,7 +40,7 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password"
                                            class="form-control @error('password') is-invalid @enderror" name="password"
-                                           required autocomplete="current-password">
+                                           autocomplete="current-password">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">

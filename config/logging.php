@@ -47,6 +47,13 @@ return [
             'level' => 'debug',
         ],
 
+        //TODO: Ограничить по размеру
+        'auth' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/auth/all.log'),
+            'days' => 7,
+        ],
+
         'daily' => [
             'driver' => 'daily',
             'path' => storage_path('logs/laravel.log'),
