@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Registered;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
@@ -76,12 +77,15 @@ class LoginController extends Controller
         $created = null;
 
         try {
+
             $created = User::create([
                 'username' => $username,
                 'email' => $email,
                 'name' => $name,
                 'password' => bcrypt($password),
             ]);
+            event(new Registered($created));
+
         } catch (\Exception $e) {
             $this->log(__('auth.CreateUserProcess'), self::LOG_CHANNEL, array_merge([
                 'msg' => __('auth.UnknownErrorCreateUser')
