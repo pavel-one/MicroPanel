@@ -33,6 +33,10 @@ use Illuminate\Notifications\Notifiable;
  * @mixin \Eloquent
  * @property string $username
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUsername($value)
+ * @property int $sudo
+ * @property int $active
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereSudo($value)
  */
 class User extends Authenticatable
 {

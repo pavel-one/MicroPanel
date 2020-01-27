@@ -1,8 +1,8 @@
 <?php
 
-Route::get('/', 'PageController@index')->middleware('guest')->name('index');
-Route::get('/home', 'HomeController@index'); //TODO: DEL
+use App\Http\Middleware\CheckActive;
 
+Route::get('/', 'PageController@index')->middleware('guest')->name('index');
 
 //Авторизация/Регистрация
 Route::group(['prefix' => 'login', 'middleware' => 'guest'], static function () {
@@ -15,8 +15,7 @@ Route::group(['prefix' => 'login', 'middleware' => 'guest'], static function () 
 Route::post('logout', 'LoginController@logout')->name('logout');
 
 //Панель управления
-Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], static function () {
-    Route::get('/', function () {
-        return 'dashboard';
-    })->name('Dashboard index');
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', CheckActive::class]], static function () {
+    Route::get('/', 'DashboardController@index')->name('Dashboard index');
+    Route::get('sorry', 'DashboardController@sorry')->name('dashboard.sorry');
 });
