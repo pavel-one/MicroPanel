@@ -92,7 +92,7 @@ class LoginController extends Controller
             ]);
         }
 
-        Auth::loginUsingId($created->id, true); //Авто авторизация
+        Auth::login($created, true); //Авто авторизация
 
         return redirect()->route('Dashboard index');
     }
