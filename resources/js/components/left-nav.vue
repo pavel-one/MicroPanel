@@ -2,7 +2,9 @@
     <div class="col-md-2">
         <ul class="nav flex-column">
             <li v-for="item in list" class="nav-item">
-                <a class="nav-link" :class="item.route === route ? 'active' : ''" :href="item.link">{{ item.name }}</a>
+                <a class="nav-link"
+                   :class="item.link === route ? 'disabled active' : ''"
+                   :href="item.link">{{ item.name }}</a>
             </li>
         </ul>
     </div>

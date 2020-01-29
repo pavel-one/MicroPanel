@@ -1918,6 +1918,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['list', 'route'],
   data: function data() {
@@ -37310,7 +37312,7 @@ var render = function() {
             "a",
             {
               staticClass: "nav-link",
-              class: item.route === _vm.route ? "active" : "",
+              class: item.link === _vm.route ? "disabled active" : "",
               attrs: { href: item.link }
             },
             [_vm._v(_vm._s(item.name))]
