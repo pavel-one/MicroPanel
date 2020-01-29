@@ -9,8 +9,20 @@ class DashboardController extends Controller
 
     public function index()
     {
-        dd(Route::getRoutes()->getIterator());
-        return view('dashboard.index');
+        $menu = json_encode([
+            [
+                'name' => 'Общее',
+                'route' => 'Dashboard index',
+                'link' => route('Dashboard index'),
+            ],
+            [
+                'name' => 'Страница ошибки',
+                'route' => 'dashboard.sorry',
+                'link' => route('dashboard.sorry')
+            ]
+        ]);
+        $currentRoute = Route::currentRouteName();
+        return view('dashboard.index', compact('menu', 'currentRoute'));
     }
 
     public function sorry()

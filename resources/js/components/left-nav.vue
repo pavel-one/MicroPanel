@@ -1,17 +1,8 @@
 <template>
     <div class="col-md-2">
         <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">{{ self.test }}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <li v-for="item in list" class="nav-item">
+                <a class="nav-link" :class="item.route === route ? 'active' : ''" :href="item.link">{{ item.name }}</a>
             </li>
         </ul>
     </div>
@@ -19,10 +10,13 @@
 
 <script>
     export default {
-        props: ['self'],
-
+        props: ['list', 'route'],
+        data() {
+            return {
+            }
+        },
         mounted: function () {
-            console.log(this.self.test);
+            console.log(this.route);
         }
     }
 </script>

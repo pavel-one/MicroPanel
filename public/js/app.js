@@ -1918,19 +1918,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['self'],
+  props: ['list', 'route'],
+  data: function data() {
+    return {};
+  },
   mounted: function mounted() {
-    console.log(this.self.test);
+    console.log(this.route);
   }
 });
 
@@ -37307,58 +37301,27 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-md-2" }, [
-    _c("ul", { staticClass: "nav flex-column" }, [
-      _c("li", { staticClass: "nav-item" }, [
-        _c("a", { staticClass: "nav-link active", attrs: { href: "#" } }, [
-          _vm._v(_vm._s(_vm.self.test))
+    _c(
+      "ul",
+      { staticClass: "nav flex-column" },
+      _vm._l(_vm.list, function(item) {
+        return _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link",
+              class: item.route === _vm.route ? "active" : "",
+              attrs: { href: item.link }
+            },
+            [_vm._v(_vm._s(item.name))]
+          )
         ])
-      ]),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _vm._m(2)
-    ])
+      }),
+      0
+    )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-        _vm._v("Link")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-        _vm._v("Link")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c(
-        "a",
-        {
-          staticClass: "nav-link disabled",
-          attrs: { href: "#", tabindex: "-1", "aria-disabled": "true" }
-        },
-        [_vm._v("Disabled")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -49712,8 +49675,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/pavel/Works/MicroPanel/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/pavel/Works/MicroPanel/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/user/Works/MicroPanel/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/user/Works/MicroPanel/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -5,7 +5,7 @@
 @section('content')
     <div class="container" id="app">
         <div class="row justify-content-center">
-            <left-nav v-bind:self="this"></left-nav>
+            <left-nav :list="{{$menu}}" :route="'{{$currentRoute}}'"></left-nav>
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">Панель управления</div>
