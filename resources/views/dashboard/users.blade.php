@@ -1,12 +1,13 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Не активирован')
+@section('title', 'Управление пользователями')
 
 @section('content')
     <div class="card">
         <div class="card-header">@yield('title')</div>
+
         <div class="card-body">
-            {{ __('dashboard.SorryPageText') }}
+            <users-table v-bind:url="'{{ route('sudo.getusers') }}'"></users-table>
         </div>
     </div>
 @endsection
