@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Route;
 class DashboardController extends Controller
 {
 
     public function index()
     {
+        dd(Route::getRoutes()->getIterator());
         return view('dashboard.index');
     }
 

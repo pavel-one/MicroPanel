@@ -3,9 +3,10 @@
 @section('title', 'Панель управления')
 
 @section('content')
-    <div class="container">
+    <div class="container" id="app">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <left-nav v-bind:self="this"></left-nav>
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">Панель управления</div>
 
