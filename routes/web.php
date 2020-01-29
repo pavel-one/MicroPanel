@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\CheckActive;
+use App\Http\Middleware\CheckSudo;
 
 Route::get('/', 'PageController@index')->middleware('guest')->name('index');
 
@@ -16,6 +17,20 @@ Route::post('logout', 'LoginController@logout')->name('logout');
 
 //Панель управления
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', CheckActive::class]], static function () {
-    Route::get('/', 'DashboardController@index')->name('Dashboard index');
-    Route::get('sorry', 'DashboardController@sorry')->name('dashboard.sorry');
+
+    Route::get('/', 'DashboardController@index')
+        ->name('Dashboard index');
+
+    Route::get('users', 'DashboardController@users')
+        ->middleware(CheckSudo::class)
+        ->name('dashboard.users');
+
+    Route::get('sorry', 'DashboardController@sorry')
+        ->name('dashboard.sorry');
+
+});
+
+Route::group(['prefix' => 'sudo', 'middleware' => ['auth', CheckSudo::class]], static function () {
+    Route::get('getuser', 'SudoController@getUser')
+        ->name('sudo.getuser');
 });

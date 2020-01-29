@@ -15,8 +15,9 @@ if (!function_exists('getMenu')) {
                     'link' => route('Dashboard index'),
                 ],
                 [
-                    'name' => 'Страница ошибки',
-                    'link' => route('dashboard.sorry')
+                    'name' => 'Пользователи',
+                    'sudo' => true,
+                    'link' => route('dashboard.users')
                 ]
             ];
         }
