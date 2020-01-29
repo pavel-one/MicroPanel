@@ -74,14 +74,20 @@
             </div>
         </div>
     </nav>
-
     <main class="py-4">
         <div class="container" id="app">
+
             <div class="row justify-content-center">
+
                 <left-nav :list="{{getMenu()}}"
                           :route="'{{ Request::root().'/'.Request::route()->uri() }}'">
                 </left-nav>
                 <div class="col-md-10">
+                    <message-dashboard v-if="message.text"
+                                       :text="message.text"
+                                       :error="message.error">
+
+                    </message-dashboard>
                     @yield('content')
                 </div>
             </div>

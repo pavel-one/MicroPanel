@@ -28,18 +28,21 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item"
-                               :class="user.active ? 'badge-warning' : 'badge-info'"
+                               :class="user.active ? 'badge-warning' : 'badge-success'"
                                href="#">
                                 {{ user.active ? 'Деактивировать' : 'Активировать' }}
                             </a>
-                            <a class="dropdown-item" href="#">Авторизоваться</a>
-                            <a class="dropdown-item" href="#">Удалить</a>
+                            <a class="dropdown-item" target="_blank" :href="user.authLink">Авторизоваться</a>
+
+                            <form :action="user.deleteLink" @submit.prevent="deleteUser" method="post">
+                                <button class="dropdown-item" type="submit">Удалить</button>
+                            </form>
                         </div>
                     </div>
                 </th>
                 <td>
                     {{ user.username }}
-                    <span :class="user.active ? 'badge-info' : 'badge-warning'"
+                    <span :class="user.active ? 'badge-success' : 'badge-warning'"
                           class="badge">
                         {{ user.active ? 'Активен' : 'Деактивирован' }}
                     </span>
@@ -57,34 +60,50 @@
         props: ['url'],
         data() {
             return {
-                load: true,
+                load: false,
                 list: [],
-            }
-        },
-        methods: {
-            setUser: function () {
-                if (!this.url) {
-                    return false;
-                }
-
-                try {
-                    axios.get(this.url)
-                        .then((response) => {
-                            if (response.status === 200) {
-                                this.load = false;
-                                this.list = response.data;
-                            }
-                        });
-                } catch (e) {
-                    this.load = false;
-                    this.list = [];
-                    return false;
-                }
-
             }
         },
         mounted: function () {
             this.setUser();
-        }
+        },
+        methods: {
+            deleteUser: function (e) {
+                if (!e.target.action) return false;
+                const url = e.target.action;
+                this.setLoad();
+
+                try {
+                    axios.delete(url)
+                        .then((response) => {
+                            this.setUser();
+                            if (response.data.message)
+                                this.$root.setMessage(response.data.message, response.data.error);
+                        });
+                } catch (e) {
+                    this.setLoad(false);
+                    return false;
+                }
+            },
+            setUser: function () {
+                if (!this.url) return false;
+                this.setLoad();
+
+                try {
+                    axios.get(this.url)
+                        .then((response) => {
+                            this.setLoad(false);
+                            this.list = response.data;
+                        });
+                } catch (e) {
+                    this.setLoad(false);
+                    this.list = [];
+                    return false;
+                }
+            },
+            setLoad: function (state = true) {
+                this.load = state;
+            },
+        },
     }
 </script>

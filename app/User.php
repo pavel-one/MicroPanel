@@ -43,6 +43,16 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * @var string $authLink
+     */
+    private $authLink;
+
+    /**
+     * @var string $deleteLink
+     */
+    private $deleteLink;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -68,4 +78,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Добавляет линк авторизации пользователя
+     * @return string
+     */
+    public function getAuthLink(): string
+    {
+        return route('sudo.authuser', ['user' => $this->id]);
+    }
+
+    /**
+     * Добавляет линк удаления пользователя
+     * @return string
+     */
+    public function getDeleteLink(): string
+    {
+        return route('sudo.deleteuser', ['user' => $this->id]);
+    }
 }

@@ -14,11 +14,7 @@
     export default {
         props: ['list', 'route'],
         data() {
-            return {
-            }
+            return {}
         },
-        mounted: function () {
-            console.log(this.route);
-        }
     }
 </script>

@@ -7,6 +7,15 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 const MicroPanel = new Vue({
     el: '#app',
     data: {
-        test: 'this is vue component'
+        message: {
+            error: false,
+            text: '',
+        },
     },
+    methods: {
+        setMessage: function (message = '', error = false) {
+            this.message.text = message;
+            this.message.error = error;
+        }
+    }
 });
