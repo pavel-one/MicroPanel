@@ -78,6 +78,9 @@
     <main class="py-4">
         <div class="container" id="app">
             <div class="row justify-content-center">
+                <left-nav :list="{{getMenu()}}"
+                          :route="'{{ Request::root().'/'.Request::route()->uri() }}'">
+                </left-nav>
                 <div class="col-md-10">
                     @yield('content')
                 </div>
