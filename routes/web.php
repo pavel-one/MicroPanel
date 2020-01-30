@@ -30,13 +30,18 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', CheckActive::cla
 
 });
 
+//Действия sudo
 Route::group(['prefix' => 'sudo', 'middleware' => ['auth', CheckSudo::class]], static function () {
-    Route::get('getusers', 'SudoController@getUsers')
+
+    Route::get('users', 'SudoController@getUsers')
         ->name('sudo.getusers');
 
-    Route::get('authuser/{user}', 'SudoController@authUser')
+    Route::get('user/auth/{user}', 'SudoController@authUser')
         ->name('sudo.authuser');
 
-    Route::delete('deleteuser/{user}', 'SudoController@deleteUser')
+    Route::delete('user/delete/{user}', 'SudoController@deleteUser')
         ->name('sudo.deleteuser');
+
+    Route::post('user/active', 'SudoController@activeUser')
+        ->name('sudo.user.active');
 });
