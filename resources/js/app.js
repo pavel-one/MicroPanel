@@ -11,6 +11,7 @@ const MicroPanel = new Vue({
             error: false,
             text: '',
         },
+        config: configApp,
     },
     methods: {
         setMessage: function (message = '', error = false) {

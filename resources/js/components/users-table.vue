@@ -29,12 +29,17 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item"
                                :class="user.active ? 'badge-warning' : 'badge-success'"
-                               href="#">
+                               @click.prevent="activeUser"
+                               href="#"
+                               :data-id="user.id">
                                 {{ user.active ? 'Деактивировать' : 'Активировать' }}
                             </a>
-                            <a class="dropdown-item" target="_blank" :href="user.authLink">Авторизоваться</a>
+                            <a class="dropdown-item" target="_blank"
+                               :data-id="user.id"
+                               href="#"
+                               @click.prevent="authLink">Авторизоваться</a>
 
-                            <form :action="user.deleteLink" @submit.prevent="deleteUser" method="post">
+                            <form :data-id="user.id" @submit.prevent="deleteUser" method="post">
                                 <button class="dropdown-item" type="submit">Удалить</button>
                             </form>
                         </div>
@@ -69,8 +74,9 @@
         },
         methods: {
             deleteUser: function (e) {
-                if (!e.target.action) return false;
-                const url = e.target.action;
+                const id = e.target.dataset.id,
+                    route = this.$root.config.routes['sudo.deleteuser'];
+                let url = '/'+route.replace(/{(.*)}/, id);
                 this.setLoad();
 
                 try {
@@ -104,6 +110,23 @@
             setLoad: function (state = true) {
                 this.load = state;
             },
+            authLink: function(e) {
+                const id = e.target.dataset.id,
+                    route = this.$root.config.routes['sudo.authuser'];
+                let url = '/'+route.replace(/{(.*)}/, id);
+                window.location.href = url;
+            },
+            activeUser: function(e) {
+                const id = e.target.dataset.id,
+                    route = this.$root.config.routes['sudo.user.active'];
+                let url = '/'+route.replace(/{(.*)}/, id);
+                axios.post(url)
+                    .then((response) => {
+                        this.setUser();
+                        if (response.data.message)
+                            this.$root.setMessage(response.data.message, response.data.error);
+                    });
+            }
         },
     }
 </script>

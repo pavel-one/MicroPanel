@@ -1921,10 +1921,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['list', 'route'],
+  props: ['route'],
   data: function data() {
-    return {};
-  }
+    return {
+      list: this.$root.config.menu,
+      user: this.$root.config.user
+    };
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -2038,6 +2042,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url'],
   data: function data() {
@@ -2053,8 +2062,9 @@ __webpack_require__.r(__webpack_exports__);
     deleteUser: function deleteUser(e) {
       var _this = this;
 
-      if (!e.target.action) return false;
-      var url = e.target.action;
+      var id = e.target.dataset.id,
+          route = this.$root.config.routes['sudo.deleteuser'];
+      var url = '/' + route.replace(/{(.*)}/, id);
       this.setLoad();
 
       try {
@@ -2089,6 +2099,24 @@ __webpack_require__.r(__webpack_exports__);
     setLoad: function setLoad() {
       var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
       this.load = state;
+    },
+    authLink: function authLink(e) {
+      var id = e.target.dataset.id,
+          route = this.$root.config.routes['sudo.authuser'];
+      var url = '/' + route.replace(/{(.*)}/, id);
+      window.location.href = url;
+    },
+    activeUser: function activeUser(e) {
+      var _this3 = this;
+
+      var id = e.target.dataset.id,
+          route = this.$root.config.routes['sudo.user.active'];
+      var url = '/' + route.replace(/{(.*)}/, id);
+      axios.post(url).then(function (response) {
+        _this3.setUser();
+
+        if (response.data.message) _this3.$root.setMessage(response.data.message, response.data.error);
+      });
     }
   }
 });
@@ -37469,7 +37497,7 @@ var render = function() {
     _c(
       "ul",
       { staticClass: "nav flex-column" },
-      _vm._l(_vm.list, function(item) {
+      _vm._l(this.list, function(item) {
         return _c("li", { staticClass: "nav-item" }, [
           _c(
             "a",
@@ -37603,7 +37631,13 @@ var render = function() {
                             class: user.active
                               ? "badge-warning"
                               : "badge-success",
-                            attrs: { href: "#" }
+                            attrs: { href: "#", "data-id": user.id },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.activeUser($event)
+                              }
+                            }
                           },
                           [
                             _vm._v(
@@ -37622,7 +37656,17 @@ var render = function() {
                           "a",
                           {
                             staticClass: "dropdown-item",
-                            attrs: { target: "_blank", href: user.authLink }
+                            attrs: {
+                              target: "_blank",
+                              "data-id": user.id,
+                              href: "#"
+                            },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.authLink($event)
+                              }
+                            }
                           },
                           [_vm._v("Авторизоваться")]
                         ),
@@ -37630,7 +37674,7 @@ var render = function() {
                         _c(
                           "form",
                           {
-                            attrs: { action: user.deleteLink, method: "post" },
+                            attrs: { "data-id": user.id, method: "post" },
                             on: {
                               submit: function($event) {
                                 $event.preventDefault()
@@ -49934,7 +49978,8 @@ var MicroPanel = new Vue({
     message: {
       error: false,
       text: ''
-    }
+    },
+    config: configApp
   },
   methods: {
     setMessage: function setMessage() {

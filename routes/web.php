@@ -42,6 +42,6 @@ Route::group(['prefix' => 'sudo', 'middleware' => ['auth', CheckSudo::class]], s
     Route::delete('user/delete/{user}', 'SudoController@deleteUser')
         ->name('sudo.deleteuser');
 
-    Route::post('user/active', 'SudoController@activeUser')
+    Route::post('user/active/{user}', 'SudoController@activeUser')
         ->name('sudo.user.active');
 });

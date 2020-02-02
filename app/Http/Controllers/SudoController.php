@@ -16,12 +16,7 @@ class SudoController extends Controller
      */
     public function getUsers()
     {
-        return User::all()
-            ->filter(static function (User $user) {
-                $user->setAttribute('authLink', $user->getAuthLink());
-                $user->setAttribute('deleteLink', $user->getDeleteLink());
-                return $user;
-            });
+        return User::all();
     }
 
     /**
@@ -64,8 +59,9 @@ class SudoController extends Controller
     {
         $message = __('dashboard.success');
         $error = false;
+        $flag = !$user->active;
 
-        if (!$user->update(['active' => !$user->active])) {
+        if (!$user->update(['active' => $flag])) {
             $message = __('dashboard.error');
             $error = true;
         }
