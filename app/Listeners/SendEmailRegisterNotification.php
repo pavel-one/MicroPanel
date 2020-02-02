@@ -3,12 +3,13 @@
 namespace App\Listeners;
 
 use App\Events\Registered;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
+use App\Jobs\SendEmailsRegister;
 use Log;
 
 class SendEmailRegisterNotification
 {
+    public const LOG_CHANNEL = 'auth';
+
     /**
      * Create the event listener.
      *
@@ -25,8 +26,9 @@ class SendEmailRegisterNotification
      * @param  Registered  $event
      * @return void
      */
-    public function handle($event)
+    public function handle($event): void
     {
-        Log::alert('Register user: '.$event->user->name);
+        SendEmailsRegister::dispatch($event->user);
+        Log::alert('Register user: '.$event->user->name, self::LOG_CHANNEL);
     }
 }

@@ -43,22 +43,12 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * @var string $authLink
-     */
-    private $authLink;
-
-    /**
-     * @var string $deleteLink
-     */
-    private $deleteLink;
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password',
+        'name', 'username', 'email', 'password', 'active'
     ];
 
     /**

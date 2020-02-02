@@ -4,7 +4,7 @@ if (!function_exists('getMenu')) {
     /**
      * GettingMenu
      * @param array $menu
-     * @return false|string
+     * @return false|array
      */
     function getMenu($menu = [])
     {
@@ -12,6 +12,7 @@ if (!function_exists('getMenu')) {
             $menu = [
                 [
                     'name' => 'Общее',
+                    'sudo' => false,
                     'link' => route('Dashboard index'),
                 ],
                 [
@@ -22,6 +23,6 @@ if (!function_exists('getMenu')) {
             ];
         }
 
-        return json_encode($menu);
+        return $menu;
     }
 }
