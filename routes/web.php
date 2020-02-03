@@ -25,6 +25,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', CheckActive::cla
         ->middleware(CheckSudo::class)
         ->name('dashboard.users');
 
+    Route::get('jobs', 'DashboardController@jobs')
+        ->middleware(CheckSudo::class)
+        ->name('dashboard.jobs');
+
     Route::get('sorry', 'DashboardController@sorry')
         ->name('dashboard.sorry');
 
@@ -44,4 +48,10 @@ Route::group(['prefix' => 'sudo', 'middleware' => ['auth', CheckSudo::class]], s
 
     Route::post('user/active/{user}', 'SudoController@activeUser')
         ->name('sudo.user.active');
+
+    Route::get('jobs', 'SudoController@getJobs')
+        ->name('sudo.jobs');
+
+    Route::get('jobs/error', 'SudoController@getErrorJobs')
+        ->name('sudo.error.jobs');
 });

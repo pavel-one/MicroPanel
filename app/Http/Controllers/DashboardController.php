@@ -19,4 +19,9 @@ class DashboardController extends Controller
     {
         return view('dashboard.sorry');
     }
+
+    public function jobs()
+    {
+        return view('dashboard.jobs');
+    }
 }
