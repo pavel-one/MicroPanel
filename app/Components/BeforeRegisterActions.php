@@ -43,4 +43,13 @@ class BeforeRegisterActions
             $email->to($to);
         });
     }
+
+    /**
+     * Логирование в канал
+     * @param $msg
+     */
+    public function log($msg) {
+        $logger = Log::stack([self::LOG_CHANNEL]);
+        $logger->info($msg);
+    }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Job;
+use App\Models\ErrorJob;
 use App\User;
 use Auth;
 use Illuminate\Database\Eloquent\Collection;
@@ -78,6 +80,23 @@ class SudoController extends Controller
     public function responseMessage($message = '', $error = false): JsonResponse
     {
         return response()->json(['message' => $message, 'error' => $error]);
+    }
+
+    /**
+     *
+     * @return Job[]|Collection
+     */
+    public function getJobs()
+    {
+        return Job::all();
+    }
+
+    /**
+     * @return ErrorJob[]|Collection
+     */
+    public function getErrorJobs()
+    {
+        return ErrorJob::all();
     }
 
 

@@ -31,7 +31,7 @@ class SendEmailsRegister implements ShouldQueue
         $this->user = $user;
 
         $email = env('APP_MANAGER_EMAILS');
-        Log::info("[Email]: $email", self::LOG_CHANNEL);
+
         if ($email) {
             $this->emailManager = explode(',', $email);
         }
@@ -48,7 +48,7 @@ class SendEmailsRegister implements ShouldQueue
     public function handle(): void
     {
         $toEmails = $this->emailManager;
-        Log::info('[Email]: ' . print_r($toEmails, true), self::LOG_CHANNEL);
+        $this->actions->log('[Email]: ' . print_r($toEmails, true));
         foreach ($toEmails as $email) {
             $this->actions->sendEmailManager($email);
         }

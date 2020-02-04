@@ -2,9 +2,7 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 /**
  * App\User
@@ -40,8 +38,6 @@ use Illuminate\Notifications\Notifiable;
  */
 class User extends Authenticatable
 {
-    use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -68,22 +64,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    /**
-     * Добавляет линк авторизации пользователя
-     * @return string
-     */
-    public function getAuthLink(): string
-    {
-        return route('sudo.authuser', ['user' => $this->id]);
-    }
-
-    /**
-     * Добавляет линк удаления пользователя
-     * @return string
-     */
-    public function getDeleteLink(): string
-    {
-        return route('sudo.deleteuser', ['user' => $this->id]);
-    }
 }

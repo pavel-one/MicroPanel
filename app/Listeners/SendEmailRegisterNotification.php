@@ -29,6 +29,8 @@ class SendEmailRegisterNotification
     public function handle($event): void
     {
         SendEmailsRegister::dispatch($event->user);
-        Log::alert('Register user: '.$event->user->name, self::LOG_CHANNEL);
+
+        $logger = Log::stack([self::LOG_CHANNEL]);
+        $logger->info('[Register user]: '.$event->user->name);
     }
 }

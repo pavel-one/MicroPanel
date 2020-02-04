@@ -19,6 +19,11 @@ if (!function_exists('getMenu')) {
                     'name' => 'Пользователи',
                     'sudo' => true,
                     'link' => route('dashboard.users')
+                ],
+                [
+                    'name' => 'Очереди',
+                    'sudo' => true,
+                    'link' => route('dashboard.jobs')
                 ]
             ];
         }
