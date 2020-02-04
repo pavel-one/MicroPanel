@@ -28,6 +28,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', CheckActive::cla
     Route::get('sorry', 'DashboardController@sorry')
         ->name('dashboard.sorry');
 
+    Route::get('profile', 'DashboardController@profile')
+        ->name('dashboard.profile');
+
 });
 
 //Действия sudo
