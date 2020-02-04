@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="public/template/logo.png?raw=true" alt="Sublime's custom image"/>
+</p>
+
 ## TODO
 - [x] Сделать нормальную документацию
 - [ ] Авторизация
