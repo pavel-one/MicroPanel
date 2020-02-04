@@ -1,8 +1,9 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+.navbar-search {
+    .input-group {
+        border: none;
+        background: rgba(255,255,255,.9);
+    }
+}

@@ -2029,6 +2029,109 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['route'],
   data: function data() {
@@ -2079,6 +2182,193 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     unset: function unset() {
       this.$root.message.text = '';
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/user-menu.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/user-menu.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: [],
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {
+    return {};
+  },
+  watch: {},
+  methods: {
+    alertDevelop: function alertDevelop() {
+      alert('Функционал в разработке');
     }
   }
 });
@@ -37687,28 +37977,346 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-md-2" }, [
-    _c(
-      "ul",
-      { staticClass: "nav flex-column" },
-      _vm._l(this.list, function(item) {
-        return _c("li", { staticClass: "nav-item" }, [
+  return _c(
+    "nav",
+    {
+      staticClass:
+        "navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white",
+      attrs: { id: "sidenav-main" }
+    },
+    [
+      _c("div", { staticClass: "container-fluid" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "collapse navbar-collapse",
+            attrs: { id: "sidenav-collapse-main" }
+          },
+          [
+            _vm._m(3),
+            _vm._v(" "),
+            _vm._m(4),
+            _vm._v(" "),
+            _c(
+              "ul",
+              { staticClass: "navbar-nav" },
+              _vm._l(this.list, function(item) {
+                return _c(
+                  "li",
+                  {
+                    class:
+                      item.link === _vm.route ? "nav-item active" : "nav-item"
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        class:
+                          item.link === _vm.route
+                            ? "nav-link active"
+                            : "nav-link",
+                        attrs: { href: item.link }
+                      },
+                      [
+                        _c("i", {
+                          staticClass: "ni",
+                          class: item.icon + " " + item.classes
+                        }),
+                        _vm._v(
+                          " " + _vm._s(item.name) + "\n                        "
+                        )
+                      ]
+                    )
+                  ]
+                )
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c("hr", { staticClass: "my-3" }),
+            _vm._v(" "),
+            _c("h6", { staticClass: "navbar-heading text-muted" }, [
+              _vm._v("Другое")
+            ]),
+            _vm._v(" "),
+            _vm._m(5)
+          ]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "navbar-toggler",
+        attrs: {
+          type: "button",
+          "data-toggle": "collapse",
+          "data-target": "#sidenav-collapse-main",
+          "aria-controls": "sidenav-main",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation"
+        }
+      },
+      [_c("span", { staticClass: "navbar-toggler-icon" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "navbar-brand pt-0", attrs: { href: "/" } }, [
+      _c("img", {
+        staticClass: "navbar-brand-img",
+        attrs: { src: "/template/logo.png", alt: "..." }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "nav align-items-center d-md-none" }, [
+      _c("li", { staticClass: "nav-item dropdown" }, [
+        _c(
+          "a",
+          {
+            staticClass: "nav-link nav-link-icon",
+            attrs: {
+              href: "#",
+              role: "button",
+              "data-toggle": "dropdown",
+              "aria-haspopup": "true",
+              "aria-expanded": "false"
+            }
+          },
+          [_c("i", { staticClass: "ni ni-bell-55" })]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "dropdown-menu dropdown-menu-arrow dropdown-menu-right",
+            attrs: { "aria-labelledby": "navbar-default_dropdown_1" }
+          },
+          [
+            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+              _vm._v("Action")
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+              _vm._v("Another action")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dropdown-divider" }),
+            _vm._v(" "),
+            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+              _vm._v("Something else here")
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "nav-item dropdown" }, [
+        _c(
+          "a",
+          {
+            staticClass: "nav-link",
+            attrs: {
+              href: "#",
+              role: "button",
+              "data-toggle": "dropdown",
+              "aria-haspopup": "true",
+              "aria-expanded": "false"
+            }
+          },
+          [
+            _c("div", { staticClass: "media align-items-center" }, [
+              _c("span", { staticClass: "avatar avatar-sm rounded-circle" }, [
+                _c("img", {
+                  attrs: {
+                    alt: "Image placeholder",
+                    src: "/template/assets/img/theme/team-1-800x800.jpg\n"
+                  }
+                })
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "dropdown-menu dropdown-menu-arrow dropdown-menu-right"
+          },
+          [
+            _c("div", { staticClass: " dropdown-header noti-title" }, [
+              _c("h6", { staticClass: "text-overflow m-0" }, [
+                _vm._v("Welcome!")
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "dropdown-item",
+                attrs: { href: "/template/examples/profile.html" }
+              },
+              [
+                _c("i", { staticClass: "ni ni-single-02" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("My profile")])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "dropdown-item",
+                attrs: { href: "/template/examples/profile.html" }
+              },
+              [
+                _c("i", { staticClass: "ni ni-settings-gear-65" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("Settings")])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "dropdown-item",
+                attrs: { href: "/template/examples/profile.html" }
+              },
+              [
+                _c("i", { staticClass: "ni ni-calendar-grid-58" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("Activity")])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "dropdown-item",
+                attrs: { href: "/template/examples/profile.html" }
+              },
+              [
+                _c("i", { staticClass: "ni ni-support-16" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("Support")])
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dropdown-divider" }),
+            _vm._v(" "),
+            _c("a", { staticClass: "dropdown-item", attrs: { href: "#!" } }, [
+              _c("i", { staticClass: "ni ni-user-run" }),
+              _vm._v(" "),
+              _c("span", [_vm._v("Logout")])
+            ])
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "navbar-collapse-header d-md-none" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-6 collapse-brand" }, [
+          _c("a", { attrs: { href: "/template/index.html" } }, [
+            _c("img", { attrs: { src: "/template/assets/img/brand/blue.png" } })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-6 collapse-close" }, [
           _c(
-            "a",
+            "button",
             {
-              staticClass: "nav-link",
-              class: item.link === _vm.route ? "disabled active" : "",
-              attrs: { href: item.link }
+              staticClass: "navbar-toggler",
+              attrs: {
+                type: "button",
+                "data-toggle": "collapse",
+                "data-target": "#sidenav-collapse-main",
+                "aria-controls": "sidenav-main",
+                "aria-expanded": "false",
+                "aria-label": "Toggle sidenav"
+              }
             },
-            [_vm._v(_vm._s(item.name))]
+            [_c("span"), _vm._v(" "), _c("span")]
           )
         ])
-      }),
-      0
-    )
-  ])
-}
-var staticRenderFns = []
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("form", { staticClass: "mt-4 mb-3 d-md-none" }, [
+      _c(
+        "div",
+        { staticClass: "input-group input-group-rounded input-group-merge" },
+        [
+          _c("input", {
+            staticClass:
+              "form-control form-control-rounded form-control-prepended",
+            attrs: {
+              type: "search",
+              placeholder: "Search",
+              "aria-label": "Search"
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-group-prepend" }, [
+            _c("div", { staticClass: "input-group-text" }, [
+              _c("span", { staticClass: "fa fa-search" })
+            ])
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "navbar-nav mb-md-3" }, [
+      _c("li", { staticClass: "nav-item" }, [
+        _c(
+          "a",
+          {
+            staticClass: "nav-link",
+            attrs: {
+              href:
+                "https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html"
+            }
+          },
+          [
+            _c("i", { staticClass: "ni ni-spaceship" }),
+            _vm._v(" Документация\n                        ")
+          ]
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -37757,6 +38365,439 @@ var render = function() {
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/user-menu.vue?vue&type=template&id=30771834&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/user-menu.vue?vue&type=template&id=30771834& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "ul",
+    { staticClass: "navbar-nav align-items-center d-none d-md-flex" },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("li", { staticClass: "nav-item dropdown" }, [
+        _c(
+          "a",
+          {
+            staticClass: "nav-link pr-0",
+            attrs: {
+              href: "#",
+              role: "button",
+              "data-toggle": "dropdown",
+              "aria-haspopup": "true",
+              "aria-expanded": "false"
+            }
+          },
+          [
+            _c("div", { staticClass: "media align-items-center" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "media-body ml-2 d-none d-lg-block" }, [
+                _c("span", { staticClass: "mb-0 text-sm  font-weight-bold" }, [
+                  _vm._v(_vm._s(this.$root.config.user.name))
+                ])
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "dropdown-menu dropdown-menu-arrow dropdown-menu-right"
+          },
+          [
+            _c("div", { staticClass: " dropdown-header noti-title" }, [
+              _c("h6", { staticClass: "text-overflow m-0" }, [
+                _vm._v(_vm._s(this.$root.config.user.username))
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "dropdown-item",
+                attrs: {
+                  href: "/" + this.$root.config.routes["dashboard.profile"]
+                }
+              },
+              [
+                _c("i", { staticClass: "ni ni-single-02" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("Профиль")])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "dropdown-item",
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.alertDevelop($event)
+                  }
+                }
+              },
+              [
+                _c("i", { staticClass: "ni ni-settings-gear-65" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("Настройки")])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "dropdown-item",
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.alertDevelop($event)
+                  }
+                }
+              },
+              [
+                _c("i", { staticClass: "ni ni-support-16" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("Тех.Поддержка")])
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dropdown-divider" }),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "dropdown-item",
+                attrs: { href: "/" + this.$root.config.routes.logout }
+              },
+              [
+                _c("i", { staticClass: "ni ni-user-run" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("Выход")])
+              ]
+            )
+          ]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "nav-item dropdown" }, [
+      _c(
+        "a",
+        {
+          staticClass: "nav-link",
+          attrs: {
+            href: "#",
+            role: "button",
+            "data-toggle": "dropdown",
+            "aria-haspopup": "true",
+            "aria-expanded": "false"
+          }
+        },
+        [_c("i", { staticClass: "ni ni-bell-55" })]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "dropdown-menu dropdown-menu-xl dropdown-menu-right py-0 overflow-hidden"
+        },
+        [
+          _c("div", { staticClass: "px-3 py-3" }, [
+            _c("h6", { staticClass: "text-sm text-muted m-0" }, [
+              _vm._v("You have "),
+              _c("strong", { staticClass: "text-primary" }, [_vm._v("13")]),
+              _vm._v(" notifications.")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "list-group list-group-flush" }, [
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item list-group-item-action",
+                attrs: { href: "#" }
+              },
+              [
+                _c("div", { staticClass: "row align-items-center" }, [
+                  _c("div", { staticClass: "col-auto" }, [
+                    _c("img", {
+                      staticClass: "avatar rounded-circle",
+                      attrs: {
+                        alt: "Image placeholder",
+                        src: "https://i.pravatar.cc/48"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col ml--2" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "d-flex justify-content-between align-items-center"
+                      },
+                      [
+                        _c("div", [
+                          _c("h4", { staticClass: "mb-0 text-sm" }, [
+                            _vm._v("John Snow")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "text-right text-muted" }, [
+                          _c("small", [_vm._v("2 hrs ago")])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-sm mb-0" }, [
+                      _vm._v("Let's meet at Starbucks at 11:30. Wdyt?")
+                    ])
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item list-group-item-action",
+                attrs: { href: "#" }
+              },
+              [
+                _c("div", { staticClass: "row align-items-center" }, [
+                  _c("div", { staticClass: "col-auto" }, [
+                    _c("img", {
+                      staticClass: "avatar rounded-circle",
+                      attrs: {
+                        alt: "Image placeholder",
+                        src: "https://i.pravatar.cc/48"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col ml--2" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "d-flex justify-content-between align-items-center"
+                      },
+                      [
+                        _c("div", [
+                          _c("h4", { staticClass: "mb-0 text-sm" }, [
+                            _vm._v("John Snow")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "text-right text-muted" }, [
+                          _c("small", [_vm._v("3 hrs ago")])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-sm mb-0" }, [
+                      _vm._v("A new issue has been reported for Argon.")
+                    ])
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item list-group-item-action",
+                attrs: { href: "#" }
+              },
+              [
+                _c("div", { staticClass: "row align-items-center" }, [
+                  _c("div", { staticClass: "col-auto" }, [
+                    _c("img", {
+                      staticClass: "avatar rounded-circle",
+                      attrs: {
+                        alt: "Image placeholder",
+                        src: "https://i.pravatar.cc/48"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col ml--2" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "d-flex justify-content-between align-items-center"
+                      },
+                      [
+                        _c("div", [
+                          _c("h4", { staticClass: "mb-0 text-sm" }, [
+                            _vm._v("John Snow")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "text-right text-muted" }, [
+                          _c("small", [_vm._v("5 hrs ago")])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-sm mb-0" }, [
+                      _vm._v("Your posts have been liked a lot.")
+                    ])
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item list-group-item-action",
+                attrs: { href: "#" }
+              },
+              [
+                _c("div", { staticClass: "row align-items-center" }, [
+                  _c("div", { staticClass: "col-auto" }, [
+                    _c("img", {
+                      staticClass: "avatar rounded-circle",
+                      attrs: {
+                        alt: "Image placeholder",
+                        src: "https://i.pravatar.cc/48"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col ml--2" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "d-flex justify-content-between align-items-center"
+                      },
+                      [
+                        _c("div", [
+                          _c("h4", { staticClass: "mb-0 text-sm" }, [
+                            _vm._v("John Snow")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "text-right text-muted" }, [
+                          _c("small", [_vm._v("2 hrs ago")])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-sm mb-0" }, [
+                      _vm._v("Let's meet at Starbucks at 11:30. Wdyt?")
+                    ])
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item list-group-item-action",
+                attrs: { href: "#" }
+              },
+              [
+                _c("div", { staticClass: "row align-items-center" }, [
+                  _c("div", { staticClass: "col-auto" }, [
+                    _c("img", {
+                      staticClass: "avatar rounded-circle",
+                      attrs: {
+                        alt: "Image placeholder",
+                        src: "https://i.pravatar.cc/48"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col ml--2" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "d-flex justify-content-between align-items-center"
+                      },
+                      [
+                        _c("div", [
+                          _c("h4", { staticClass: "mb-0 text-sm" }, [
+                            _vm._v("John Snow")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "text-right text-muted" }, [
+                          _c("small", [_vm._v("3 hrs ago")])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-sm mb-0" }, [
+                      _vm._v("A new issue has been reported for Argon.")
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass:
+                "dropdown-item text-center text-primary font-weight-bold py-3",
+              attrs: { href: "#" }
+            },
+            [_vm._v("Показать все")]
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "avatar avatar-sm rounded-circle" }, [
+      _c("img", {
+        attrs: {
+          alt: "Image placeholder",
+          src: "/template/assets/img/theme/team-4-800x800.jpg"
+        }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -50126,6 +51167,7 @@ var map = {
 	"./components/data-list.vue": "./resources/js/components/data-list.vue",
 	"./components/left-nav.vue": "./resources/js/components/left-nav.vue",
 	"./components/message-dashboard.vue": "./resources/js/components/message-dashboard.vue",
+	"./components/user-menu.vue": "./resources/js/components/user-menu.vue",
 	"./components/users-table.vue": "./resources/js/components/users-table.vue"
 };
 
@@ -50188,6 +51230,958 @@ var MicroPanel = new Vue({
 
 /***/ }),
 
+/***/ "./resources/js/argon-dashboard.js":
+/*!*****************************************!*\
+  !*** ./resources/js/argon-dashboard.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*!
+
+=========================================================
+* Argon Dashboard - v1.1.2
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+* Copyright 2018 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
+
+* Coded by www.creative-tim.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+*/
+//
+// Bootstrap Datepicker
+//
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var Datepicker = function () {
+  // Variables
+  var $datepicker = $('.datepicker'); // Methods
+
+  function init($this) {
+    var options = {
+      disableTouchKeyboard: true,
+      autoclose: false
+    };
+    $this.datepicker(options);
+  } // Events
+
+
+  if ($datepicker.length) {
+    $datepicker.each(function () {
+      init($(this));
+    });
+  }
+}(); //
+// Icon code copy/paste
+//
+
+
+'use strict';
+
+var CopyIcon = function () {
+  // Variables
+  var $element = '.btn-icon-clipboard',
+      $btn = $($element); // Methods
+
+  function init($this) {
+    $this.tooltip().on('mouseleave', function () {
+      // Explicitly hide tooltip, since after clicking it remains
+      // focused (as it's a button), so tooltip would otherwise
+      // remain visible until focus is moved away
+      $this.tooltip('hide');
+    });
+    var clipboard = new ClipboardJS($element);
+    clipboard.on('success', function (e) {
+      $(e.trigger).attr('title', 'Copied!').tooltip('_fixTitle').tooltip('show').attr('title', 'Copy to clipboard').tooltip('_fixTitle');
+      e.clearSelection();
+    });
+  } // Events
+
+
+  if ($btn.length) {
+    init($btn);
+  }
+}(); //
+// Form control
+//
+
+
+'use strict';
+
+var FormControl = function () {
+  // Variables
+  var $input = $('.form-control'); // Methods
+
+  function init($this) {
+    $this.on('focus blur', function (e) {
+      $(this).parents('.form-group').toggleClass('focused', e.type === 'focus' || this.value.length > 0);
+    }).trigger('blur');
+  } // Events
+
+
+  if ($input.length) {
+    init($input);
+  }
+}(); //
+// Google maps
+//
+
+
+var $map = $('#map-canvas'),
+    map,
+    lat,
+    lng,
+    color = "#5e72e4";
+
+function initMap() {
+  map = document.getElementById('map-canvas');
+  lat = map.getAttribute('data-lat');
+  lng = map.getAttribute('data-lng');
+  var myLatlng = new google.maps.LatLng(lat, lng);
+  var mapOptions = {
+    zoom: 12,
+    scrollwheel: false,
+    center: myLatlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    styles: [{
+      "featureType": "administrative",
+      "elementType": "labels.text.fill",
+      "stylers": [{
+        "color": "#444444"
+      }]
+    }, {
+      "featureType": "landscape",
+      "elementType": "all",
+      "stylers": [{
+        "color": "#f2f2f2"
+      }]
+    }, {
+      "featureType": "poi",
+      "elementType": "all",
+      "stylers": [{
+        "visibility": "off"
+      }]
+    }, {
+      "featureType": "road",
+      "elementType": "all",
+      "stylers": [{
+        "saturation": -100
+      }, {
+        "lightness": 45
+      }]
+    }, {
+      "featureType": "road.highway",
+      "elementType": "all",
+      "stylers": [{
+        "visibility": "simplified"
+      }]
+    }, {
+      "featureType": "road.arterial",
+      "elementType": "labels.icon",
+      "stylers": [{
+        "visibility": "off"
+      }]
+    }, {
+      "featureType": "transit",
+      "elementType": "all",
+      "stylers": [{
+        "visibility": "off"
+      }]
+    }, {
+      "featureType": "water",
+      "elementType": "all",
+      "stylers": [{
+        "color": color
+      }, {
+        "visibility": "on"
+      }]
+    }]
+  };
+  map = new google.maps.Map(map, mapOptions);
+  var marker = new google.maps.Marker({
+    position: myLatlng,
+    map: map,
+    animation: google.maps.Animation.DROP,
+    title: 'Hello World!'
+  });
+  var contentString = '<div class="info-window-content"><h2>Argon Dashboard</h2>' + '<p>A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</p></div>';
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+  google.maps.event.addListener(marker, 'click', function () {
+    infowindow.open(map, marker);
+  });
+}
+
+if ($map.length) {
+  google.maps.event.addDomListener(window, 'load', initMap);
+} // //
+// // Headroom - show/hide navbar on scroll
+// //
+//
+// 'use strict';
+//
+// var Headroom = (function() {
+//
+// 	// Variables
+//
+// 	var $headroom = $('#navbar-main');
+//
+//
+// 	// Methods
+//
+// 	function init($this) {
+//
+//     var headroom = new Headroom(document.querySelector("#navbar-main"), {
+//         offset: 300,
+//         tolerance: {
+//             up: 30,
+//             down: 30
+//         },
+//     });
+//
+//
+//
+// 	// Events
+//
+// 	if ($headroom.length) {
+// 		headroom.init();
+// 	}
+//
+// })();
+//
+// Navbar
+//
+
+
+'use strict';
+
+var Navbar = function () {
+  // Variables
+  var $nav = $('.navbar-nav, .navbar-nav .nav');
+  var $collapse = $('.navbar .collapse');
+  var $dropdown = $('.navbar .dropdown'); // Methods
+
+  function accordion($this) {
+    $this.closest($nav).find($collapse).not($this).collapse('hide');
+  }
+
+  function closeDropdown($this) {
+    var $dropdownMenu = $this.find('.dropdown-menu');
+    $dropdownMenu.addClass('close');
+    setTimeout(function () {
+      $dropdownMenu.removeClass('close');
+    }, 200);
+  } // Events
+
+
+  $collapse.on({
+    'show.bs.collapse': function showBsCollapse() {
+      accordion($(this));
+    }
+  });
+  $dropdown.on({
+    'hide.bs.dropdown': function hideBsDropdown() {
+      closeDropdown($(this));
+    }
+  });
+}(); //
+// Navbar collapse
+//
+
+
+var NavbarCollapse = function () {
+  // Variables
+  var $nav = $('.navbar-nav'),
+      $collapse = $('.navbar .collapse'); // Methods
+
+  function hideNavbarCollapse($this) {
+    $this.addClass('collapsing-out');
+  }
+
+  function hiddenNavbarCollapse($this) {
+    $this.removeClass('collapsing-out');
+  } // Events
+
+
+  if ($collapse.length) {
+    $collapse.on({
+      'hide.bs.collapse': function hideBsCollapse() {
+        hideNavbarCollapse($collapse);
+      }
+    });
+    $collapse.on({
+      'hidden.bs.collapse': function hiddenBsCollapse() {
+        hiddenNavbarCollapse($collapse);
+      }
+    });
+  }
+}(); //
+// Form control
+//
+
+
+'use strict';
+
+var noUiSlider = function () {
+  // Variables
+  // var $sliderContainer = $('.input-slider-container'),
+  // 		$slider = $('.input-slider'),
+  // 		$sliderId = $slider.attr('id'),
+  // 		$sliderMinValue = $slider.data('range-value-min');
+  // 		$sliderMaxValue = $slider.data('range-value-max');;
+  // // Methods
+  //
+  // function init($this) {
+  // 	$this.on('focus blur', function(e) {
+  //       $this.parents('.form-group').toggleClass('focused', (e.type === 'focus' || this.value.length > 0));
+  //   }).trigger('blur');
+  // }
+  //
+  //
+  // // Events
+  //
+  // if ($input.length) {
+  // 	init($input);
+  // }
+  if ($(".input-slider-container")[0]) {
+    $('.input-slider-container').each(function () {
+      var slider = $(this).find('.input-slider');
+      var sliderId = slider.attr('id');
+      var minValue = slider.data('range-value-min');
+      var maxValue = slider.data('range-value-max');
+      var sliderValue = $(this).find('.range-slider-value');
+      var sliderValueId = sliderValue.attr('id');
+      var startValue = sliderValue.data('range-value-low');
+      var c = document.getElementById(sliderId),
+          d = document.getElementById(sliderValueId);
+      noUiSlider.create(c, {
+        start: [parseInt(startValue)],
+        connect: [true, false],
+        //step: 1000,
+        range: {
+          'min': [parseInt(minValue)],
+          'max': [parseInt(maxValue)]
+        }
+      });
+      c.noUiSlider.on('update', function (a, b) {
+        d.textContent = a[b];
+      });
+    });
+  }
+
+  if ($("#input-slider-range")[0]) {
+    var c = document.getElementById("input-slider-range"),
+        d = document.getElementById("input-slider-range-value-low"),
+        e = document.getElementById("input-slider-range-value-high"),
+        f = [d, e];
+    noUiSlider.create(c, {
+      start: [parseInt(d.getAttribute('data-range-value-low')), parseInt(e.getAttribute('data-range-value-high'))],
+      connect: !0,
+      range: {
+        min: parseInt(c.getAttribute('data-range-value-min')),
+        max: parseInt(c.getAttribute('data-range-value-max'))
+      }
+    }), c.noUiSlider.on("update", function (a, b) {
+      f[b].textContent = a[b];
+    });
+  }
+}(); //
+// Popover
+//
+
+
+'use strict';
+
+var Popover = function () {
+  // Variables
+  var $popover = $('[data-toggle="popover"]'),
+      $popoverClass = ''; // Methods
+
+  function init($this) {
+    if ($this.data('color')) {
+      $popoverClass = 'popover-' + $this.data('color');
+    }
+
+    var options = {
+      trigger: 'focus',
+      template: '<div class="popover ' + $popoverClass + '" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>'
+    };
+    $this.popover(options);
+  } // Events
+
+
+  if ($popover.length) {
+    $popover.each(function () {
+      init($(this));
+    });
+  }
+}(); //
+// Scroll to (anchor links)
+//
+
+
+'use strict';
+
+var ScrollTo = function () {
+  //
+  // Variables
+  //
+  var $scrollTo = $('.scroll-me, [data-scroll-to], .toc-entry a'); //
+  // Methods
+  //
+
+  function scrollTo($this) {
+    var $el = $this.attr('href');
+    var offset = $this.data('scroll-to-offset') ? $this.data('scroll-to-offset') : 0;
+    var options = {
+      scrollTop: $($el).offset().top - offset
+    }; // Animate scroll to the selected section
+
+    $('html, body').stop(true, true).animate(options, 600);
+    event.preventDefault();
+  } //
+  // Events
+  //
+
+
+  if ($scrollTo.length) {
+    $scrollTo.on('click', function (event) {
+      scrollTo($(this));
+    });
+  }
+}(); //
+// Tooltip
+//
+
+
+'use strict';
+
+var Tooltip = function () {
+  // Variables
+  var $tooltip = $('[data-toggle="tooltip"]'); // Methods
+
+  function init() {
+    $tooltip.tooltip();
+  } // Events
+
+
+  if ($tooltip.length) {
+    init();
+  }
+}(); //
+// Charts
+//
+
+
+'use strict';
+
+var Charts = function () {
+  // Variable
+  var $toggle = $('[data-toggle="chart"]');
+  var mode = 'light'; //(themeMode) ? themeMode : 'light';
+
+  var fonts = {
+    base: 'Open Sans'
+  }; // Colors
+
+  var colors = {
+    gray: {
+      100: '#f6f9fc',
+      200: '#e9ecef',
+      300: '#dee2e6',
+      400: '#ced4da',
+      500: '#adb5bd',
+      600: '#8898aa',
+      700: '#525f7f',
+      800: '#32325d',
+      900: '#212529'
+    },
+    theme: {
+      'default': '#172b4d',
+      'primary': '#5e72e4',
+      'secondary': '#f4f5f7',
+      'info': '#11cdef',
+      'success': '#2dce89',
+      'danger': '#f5365c',
+      'warning': '#fb6340'
+    },
+    black: '#12263F',
+    white: '#FFFFFF',
+    transparent: 'transparent'
+  }; // Methods
+  // Chart.js global options
+
+  function chartOptions() {
+    // Options
+    var options = {
+      defaults: {
+        global: {
+          responsive: true,
+          maintainAspectRatio: false,
+          defaultColor: mode == 'dark' ? colors.gray[700] : colors.gray[600],
+          defaultFontColor: mode == 'dark' ? colors.gray[700] : colors.gray[600],
+          defaultFontFamily: fonts.base,
+          defaultFontSize: 13,
+          layout: {
+            padding: 0
+          },
+          legend: {
+            display: false,
+            position: 'bottom',
+            labels: {
+              usePointStyle: true,
+              padding: 16
+            }
+          },
+          elements: {
+            point: {
+              radius: 0,
+              backgroundColor: colors.theme['primary']
+            },
+            line: {
+              tension: .4,
+              borderWidth: 4,
+              borderColor: colors.theme['primary'],
+              backgroundColor: colors.transparent,
+              borderCapStyle: 'rounded'
+            },
+            rectangle: {
+              backgroundColor: colors.theme['warning']
+            },
+            arc: {
+              backgroundColor: colors.theme['primary'],
+              borderColor: mode == 'dark' ? colors.gray[800] : colors.white,
+              borderWidth: 4
+            }
+          },
+          tooltips: {
+            enabled: false,
+            mode: 'index',
+            intersect: false,
+            custom: function custom(model) {
+              // Get tooltip
+              var $tooltip = $('#chart-tooltip'); // Create tooltip on first render
+
+              if (!$tooltip.length) {
+                $tooltip = $('<div id="chart-tooltip" class="popover bs-popover-top" role="tooltip"></div>'); // Append to body
+
+                $('body').append($tooltip);
+              } // Hide if no tooltip
+
+
+              if (model.opacity === 0) {
+                $tooltip.css('display', 'none');
+                return;
+              }
+
+              function getBody(bodyItem) {
+                return bodyItem.lines;
+              } // Fill with content
+
+
+              if (model.body) {
+                var titleLines = model.title || [];
+                var bodyLines = model.body.map(getBody);
+                var html = ''; // Add arrow
+
+                html += '<div class="arrow"></div>'; // Add header
+
+                titleLines.forEach(function (title) {
+                  html += '<h3 class="popover-header text-center">' + title + '</h3>';
+                }); // Add body
+
+                bodyLines.forEach(function (body, i) {
+                  var colors = model.labelColors[i];
+                  var styles = 'background-color: ' + colors.backgroundColor;
+                  var indicator = '<span class="badge badge-dot"><i class="bg-primary"></i></span>';
+                  var align = bodyLines.length > 1 ? 'justify-content-left' : 'justify-content-center';
+                  html += '<div class="popover-body d-flex align-items-center ' + align + '">' + indicator + body + '</div>';
+                });
+                $tooltip.html(html);
+              } // Get tooltip position
+
+
+              var $canvas = $(this._chart.canvas);
+              var canvasWidth = $canvas.outerWidth();
+              var canvasHeight = $canvas.outerHeight();
+              var canvasTop = $canvas.offset().top;
+              var canvasLeft = $canvas.offset().left;
+              var tooltipWidth = $tooltip.outerWidth();
+              var tooltipHeight = $tooltip.outerHeight();
+              var top = canvasTop + model.caretY - tooltipHeight - 16;
+              var left = canvasLeft + model.caretX - tooltipWidth / 2; // Display tooltip
+
+              $tooltip.css({
+                'top': top + 'px',
+                'left': left + 'px',
+                'display': 'block',
+                'z-index': '100'
+              });
+            },
+            callbacks: {
+              label: function label(item, data) {
+                var label = data.datasets[item.datasetIndex].label || '';
+                var yLabel = item.yLabel;
+                var content = '';
+
+                if (data.datasets.length > 1) {
+                  content += '<span class="badge badge-primary mr-auto">' + label + '</span>';
+                }
+
+                content += '<span class="popover-body-value">' + yLabel + '</span>';
+                return content;
+              }
+            }
+          }
+        },
+        doughnut: {
+          cutoutPercentage: 83,
+          tooltips: {
+            callbacks: {
+              title: function title(item, data) {
+                var title = data.labels[item[0].index];
+                return title;
+              },
+              label: function label(item, data) {
+                var value = data.datasets[0].data[item.index];
+                var content = '';
+                content += '<span class="popover-body-value">' + value + '</span>';
+                return content;
+              }
+            }
+          },
+          legendCallback: function legendCallback(chart) {
+            var data = chart.data;
+            var content = '';
+            data.labels.forEach(function (label, index) {
+              var bgColor = data.datasets[0].backgroundColor[index];
+              content += '<span class="chart-legend-item">';
+              content += '<i class="chart-legend-indicator" style="background-color: ' + bgColor + '"></i>';
+              content += label;
+              content += '</span>';
+            });
+            return content;
+          }
+        }
+      }
+    }; // yAxes
+
+    Chart.scaleService.updateScaleDefaults('linear', {
+      gridLines: {
+        borderDash: [2],
+        borderDashOffset: [2],
+        color: mode == 'dark' ? colors.gray[900] : colors.gray[300],
+        drawBorder: false,
+        drawTicks: false,
+        lineWidth: 0,
+        zeroLineWidth: 0,
+        zeroLineColor: mode == 'dark' ? colors.gray[900] : colors.gray[300],
+        zeroLineBorderDash: [2],
+        zeroLineBorderDashOffset: [2]
+      },
+      ticks: {
+        beginAtZero: true,
+        padding: 10,
+        callback: function callback(value) {
+          if (!(value % 10)) {
+            return value;
+          }
+        }
+      }
+    }); // xAxes
+
+    Chart.scaleService.updateScaleDefaults('category', {
+      gridLines: {
+        drawBorder: false,
+        drawOnChartArea: false,
+        drawTicks: false
+      },
+      ticks: {
+        padding: 20
+      },
+      maxBarThickness: 10
+    });
+    return options;
+  } // Parse global options
+
+
+  function parseOptions(parent, options) {
+    for (var item in options) {
+      if (_typeof(options[item]) !== 'object') {
+        parent[item] = options[item];
+      } else {
+        parseOptions(parent[item], options[item]);
+      }
+    }
+  } // Push options
+
+
+  function pushOptions(parent, options) {
+    for (var item in options) {
+      if (Array.isArray(options[item])) {
+        options[item].forEach(function (data) {
+          parent[item].push(data);
+        });
+      } else {
+        pushOptions(parent[item], options[item]);
+      }
+    }
+  } // Pop options
+
+
+  function popOptions(parent, options) {
+    for (var item in options) {
+      if (Array.isArray(options[item])) {
+        options[item].forEach(function (data) {
+          parent[item].pop();
+        });
+      } else {
+        popOptions(parent[item], options[item]);
+      }
+    }
+  } // Toggle options
+
+
+  function toggleOptions(elem) {
+    var options = elem.data('add');
+    var $target = $(elem.data('target'));
+    var $chart = $target.data('chart');
+
+    if (elem.is(':checked')) {
+      // Add options
+      pushOptions($chart, options); // Update chart
+
+      $chart.update();
+    } else {
+      // Remove options
+      popOptions($chart, options); // Update chart
+
+      $chart.update();
+    }
+  } // Update options
+
+
+  function updateOptions(elem) {
+    var options = elem.data('update');
+    var $target = $(elem.data('target'));
+    var $chart = $target.data('chart'); // Parse options
+
+    parseOptions($chart, options); // Toggle ticks
+
+    toggleTicks(elem, $chart); // Update chart
+
+    $chart.update();
+  } // Toggle ticks
+
+
+  function toggleTicks(elem, $chart) {
+    if (elem.data('prefix') !== undefined || elem.data('prefix') !== undefined) {
+      var prefix = elem.data('prefix') ? elem.data('prefix') : '';
+      var suffix = elem.data('suffix') ? elem.data('suffix') : ''; // Update ticks
+
+      $chart.options.scales.yAxes[0].ticks.callback = function (value) {
+        if (!(value % 10)) {
+          return prefix + value + suffix;
+        }
+      }; // Update tooltips
+
+
+      $chart.options.tooltips.callbacks.label = function (item, data) {
+        var label = data.datasets[item.datasetIndex].label || '';
+        var yLabel = item.yLabel;
+        var content = '';
+
+        if (data.datasets.length > 1) {
+          content += '<span class="popover-body-label mr-auto">' + label + '</span>';
+        }
+
+        content += '<span class="popover-body-value">' + prefix + yLabel + suffix + '</span>';
+        return content;
+      };
+    }
+  } // Events
+  // Parse global options
+
+
+  if (window.Chart) {
+    parseOptions(Chart, chartOptions());
+  } // Toggle options
+
+
+  $toggle.on({
+    'change': function change() {
+      var $this = $(this);
+
+      if ($this.is('[data-add]')) {
+        toggleOptions($this);
+      }
+    },
+    'click': function click() {
+      var $this = $(this);
+
+      if ($this.is('[data-update]')) {
+        updateOptions($this);
+      }
+    }
+  }); // Return
+
+  return {
+    colors: colors,
+    fonts: fonts,
+    mode: mode
+  };
+}(); //
+// Orders chart
+//
+
+
+var OrdersChart = function () {
+  //
+  // Variables
+  //
+  var $chart = $('#chart-orders');
+  var $ordersSelect = $('[name="ordersSelect"]'); //
+  // Methods
+  //
+  // Init chart
+
+  function initChart($chart) {
+    // Create chart
+    var ordersChart = new Chart($chart, {
+      type: 'bar',
+      options: {
+        scales: {
+          yAxes: [{
+            gridLines: {
+              lineWidth: 1,
+              color: '#dfe2e6',
+              zeroLineColor: '#dfe2e6'
+            },
+            ticks: {
+              callback: function callback(value) {
+                if (!(value % 10)) {
+                  //return '$' + value + 'k'
+                  return value;
+                }
+              }
+            }
+          }]
+        },
+        tooltips: {
+          callbacks: {
+            label: function label(item, data) {
+              var label = data.datasets[item.datasetIndex].label || '';
+              var yLabel = item.yLabel;
+              var content = '';
+
+              if (data.datasets.length > 1) {
+                content += '<span class="popover-body-label mr-auto">' + label + '</span>';
+              }
+
+              content += '<span class="popover-body-value">' + yLabel + '</span>';
+              return content;
+            }
+          }
+        }
+      },
+      data: {
+        labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'Sales',
+          data: [25, 20, 30, 22, 17, 29]
+        }]
+      }
+    }); // Save to jQuery object
+
+    $chart.data('chart', ordersChart);
+  } // Init chart
+
+
+  if ($chart.length) {
+    initChart($chart);
+  }
+}(); //
+// Charts
+//
+
+
+'use strict'; //
+// Sales chart
+//
+
+
+var SalesChart = function () {
+  // Variables
+  var $chart = $('#chart-sales'); // Methods
+
+  function init($chart) {
+    var salesChart = new Chart($chart, {
+      type: 'line',
+      options: {
+        scales: {
+          yAxes: [{
+            gridLines: {
+              lineWidth: 1,
+              color: Charts.colors.gray[900],
+              zeroLineColor: Charts.colors.gray[900]
+            },
+            ticks: {
+              callback: function callback(value) {
+                if (!(value % 10)) {
+                  return '$' + value + 'k';
+                }
+              }
+            }
+          }]
+        },
+        tooltips: {
+          callbacks: {
+            label: function label(item, data) {
+              var label = data.datasets[item.datasetIndex].label || '';
+              var yLabel = item.yLabel;
+              var content = '';
+
+              if (data.datasets.length > 1) {
+                content += '<span class="popover-body-label mr-auto">' + label + '</span>';
+              }
+
+              content += '<span class="popover-body-value">$' + yLabel + 'k</span>';
+              return content;
+            }
+          }
+        }
+      },
+      data: {
+        labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'Performance',
+          data: [0, 20, 10, 30, 15, 40, 20, 60, 60]
+        }]
+      }
+    }); // Save to jQuery object
+
+    $chart.data('chart', salesChart);
+  }
+
+  ; // Events
+
+  if ($chart.length) {
+    init($chart);
+  }
+}();
+
+/***/ }),
+
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
@@ -50203,9 +52197,14 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
  */
 
 try {
-  window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")["default"];
+  __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
-  __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
+  __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js"); // TODO: Feature
+  // require('/public/template/assets/js/plugins/chart.js/dist/Chart.min.js');
+  // require('/public/template/assets/js/plugins/chart.js/dist/Chart.extension');
+
+
+  __webpack_require__(/*! ./argon-dashboard */ "./resources/js/argon-dashboard.js");
 } catch (e) {}
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -50415,6 +52414,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_message_dashboard_vue_vue_type_template_id_379e5693___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_message_dashboard_vue_vue_type_template_id_379e5693___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/user-menu.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/user-menu.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _user_menu_vue_vue_type_template_id_30771834___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./user-menu.vue?vue&type=template&id=30771834& */ "./resources/js/components/user-menu.vue?vue&type=template&id=30771834&");
+/* harmony import */ var _user_menu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user-menu.vue?vue&type=script&lang=js& */ "./resources/js/components/user-menu.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _user_menu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _user_menu_vue_vue_type_template_id_30771834___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _user_menu_vue_vue_type_template_id_30771834___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/user-menu.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/user-menu.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/user-menu.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_user_menu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./user-menu.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/user-menu.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_user_menu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/user-menu.vue?vue&type=template&id=30771834&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/user-menu.vue?vue&type=template&id=30771834& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_user_menu_vue_vue_type_template_id_30771834___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./user-menu.vue?vue&type=template&id=30771834& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/user-menu.vue?vue&type=template&id=30771834&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_user_menu_vue_vue_type_template_id_30771834___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_user_menu_vue_vue_type_template_id_30771834___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
