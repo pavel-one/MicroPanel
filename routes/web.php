@@ -13,7 +13,7 @@ Route::group(['prefix' => 'login', 'middleware' => 'guest'], static function () 
     Route::get('register', 'LoginController@registerView');
     Route::post('register', 'LoginController@register')->name('register');
 });
-Route::post('logout', 'LoginController@logout')->name('logout');
+Route::get('logout', 'LoginController@logout')->name('logout');
 
 //Панель управления
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', CheckActive::class]], static function () {
@@ -34,6 +34,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', CheckActive::cla
 
     Route::get('profile', 'DashboardController@profile')
         ->name('dashboard.profile');
+
 
 });
 

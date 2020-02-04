@@ -7,9 +7,14 @@ window._ = require('lodash');
  */
 
 try {
-    window.Popper = require('popper.js').default;
+    require('jquery');
     require('bootstrap');
-} catch (e) {}
+    // TODO: Feature
+    // require('/public/template/assets/js/plugins/chart.js/dist/Chart.min.js');
+    // require('/public/template/assets/js/plugins/chart.js/dist/Chart.extension');
+    require('./argon-dashboard');
+} catch (e) {
+}
 
 
 window.axios = require('axios');

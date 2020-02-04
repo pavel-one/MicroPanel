@@ -13,21 +13,29 @@ if (!function_exists('getMenu')) {
                 [
                     'name' => 'Общее',
                     'sudo' => false,
+                    'icon' => 'ni-tv-2',
+                    'classes' => 'text-primary',
                     'link' => route('Dashboard index'),
                 ],
                 [
                     'name' => 'Профиль',
                     'sudo' => false,
+                    'icon' => 'ni-circle-08',
+                    'classes' => 'text-orange',
                     'link' => route('dashboard.profile')
                 ],
                 [
                     'name' => 'Пользователи',
                     'sudo' => true,
+                    'icon' => 'ni-single-02',
+                    'classes' => 'text-yellow',
                     'link' => route('dashboard.users')
                 ],
                 [
                     'name' => 'Очереди',
                     'sudo' => true,
+                    'icon' => 'ni-user-run',
+                    'classes' => 'text-red',
                     'link' => route('dashboard.jobs')
                 ],
             ];
