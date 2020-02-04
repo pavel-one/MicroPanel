@@ -16,6 +16,11 @@ if (!function_exists('getMenu')) {
                     'link' => route('Dashboard index'),
                 ],
                 [
+                    'name' => 'Профиль',
+                    'sudo' => false,
+                    'link' => route('dashboard.profile')
+                ],
+                [
                     'name' => 'Пользователи',
                     'sudo' => true,
                     'link' => route('dashboard.users')
@@ -24,7 +29,7 @@ if (!function_exists('getMenu')) {
                     'name' => 'Очереди',
                     'sudo' => true,
                     'link' => route('dashboard.jobs')
-                ]
+                ],
             ];
         }
 
