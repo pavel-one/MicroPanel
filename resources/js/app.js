@@ -25,6 +25,22 @@ const MicroPanel = new Vue({
                 text: message,
                 showConfirmButton: false,
             })
+        },
+        alertDevelop: function () {
+            this.$swal.fire({
+                icon: 'error',
+                title: 'Упс...',
+                // toast: true,
+                // position: 'top-end',
+                // timer: 2000,
+                // timerProgressBar: true,
+                text: 'Функционал еще в разработке',
+            })
+        },
+        getUrlRoute: function(route, id) {
+            return '/'+route.replace(/{(.*)}/, id);
         }
     }
 });
+
+// helpers

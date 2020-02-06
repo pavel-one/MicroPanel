@@ -4,6 +4,7 @@ use App\Http\Middleware\CheckActive;
 use App\Http\Middleware\CheckSudo;
 
 Route::get('/', 'PageController@index')->middleware('guest')->name('index');
+Route::get('/test', 'PageController@test');
 
 //Авторизация/Регистрация
 Route::group(['prefix' => 'login', 'middleware' => 'guest'], static function () {

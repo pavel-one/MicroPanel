@@ -2,6 +2,7 @@
 
 namespace App\Components;
 
+use Illuminate\Http\JsonResponse;
 use Route;
 use Auth;
 
@@ -85,5 +86,15 @@ class Application
         }
 
         return $out;
+    }
+
+    /**
+     * @param string $message
+     * @param bool $error
+     * @return JsonResponse
+     */
+    public static function responseMessage($message = '', $error = false): JsonResponse
+    {
+        return response()->json(['message' => $message, 'error' => $error]);
     }
 }

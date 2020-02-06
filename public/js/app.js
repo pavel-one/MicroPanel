@@ -1969,6 +1969,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
@@ -1984,15 +1987,18 @@ __webpack_require__.r(__webpack_exports__);
       this["public"] = !this["public"];
     },
     uploadPhoto: function uploadPhoto(e) {
+      var _this = this;
+
       var file = e.target.files[0];
-      var form = new FormData();
+      var form = new FormData(),
+          url = this.$root.getUrlRoute(this.$root.config.routes['dashboard.user.uploadPhoto'], this.$root.config.user.id);
       form.append('photo', file);
-      axios.post('url', form, {
+      axios.post(url, form, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       }).then(function (response) {
-        console.log(response);
+        _this.$root.setMessage(response.data.message, response.data.error);
       })["catch"](function (response) {
         console.log(response);
       });
@@ -2380,17 +2386,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
     return {};
   },
   mounted: function mounted() {},
-  methods: {}
+  methods: {
+    save: function save() {
+      console.log('save action');
+    }
+  }
 });
 
 /***/ }),
@@ -41832,10 +41838,34 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0),
+    _c(
+      "div",
+      {
+        staticClass:
+          "card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4"
+      },
+      [
+        _c("div", { staticClass: "d-flex justify-content-between" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-sm btn-info mr-4",
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.$root.alertDevelop($event)
+                }
+              }
+            },
+            [_vm._v("Написать")]
+          )
+        ])
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "card-body pt-0 pt-md-4" }, [
-      _vm._m(1),
+      _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "text-center" }, [
         _c("h3", [
@@ -41877,33 +41907,24 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Показать мой профиль")])
+        _c(
+          "a",
+          {
+            attrs: { href: "#" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.$root.alertDevelop($event)
+              }
+            }
+          },
+          [_vm._v("Показать мой профиль")]
+        )
       ])
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4"
-      },
-      [
-        _c("div", { staticClass: "d-flex justify-content-between" }, [
-          _c(
-            "a",
-            { staticClass: "btn btn-sm btn-info mr-4", attrs: { href: "#" } },
-            [_vm._v("Написать")]
-          )
-        ])
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -42414,7 +42435,41 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card bg-secondary shadow" }, [
-    _vm._m(0),
+    _c("div", { staticClass: "card-header bg-white border-0" }, [
+      _c("div", { staticClass: "row align-items-center" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-4 text-right" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.$root.alertDevelop($event)
+                }
+              }
+            },
+            [_vm._v("\n                    Мои настройки\n                ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success",
+              attrs: { type: "button" },
+              on: { click: _vm.save }
+            },
+            [
+              _vm._m(1),
+              _vm._v("\n                    Сохранить\n                ")
+            ]
+          )
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
       _c("form", [
@@ -42663,51 +42718,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header bg-white border-0" }, [
-      _c("div", { staticClass: "row align-items-center" }, [
-        _c("div", { staticClass: "col-8" }, [
-          _c("h3", { staticClass: "mb-0" }, [_vm._v("Мой профиль")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4 text-right" }, [
-          _c(
-            "a",
-            { staticClass: "btn btn-sm btn-primary", attrs: { href: "#" } },
-            [_vm._v("\n                    Мои настройки\n                ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary",
-              attrs: { type: "button", disabled: "" }
-            },
-            [
-              _c("span", {
-                staticClass: "spinner-grow spinner-grow-sm",
-                attrs: { role: "status", "aria-hidden": "true" }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary",
-              attrs: { type: "button", disabled: "" }
-            },
-            [
-              _c("span", {
-                staticClass: "spinner-grow spinner-grow-sm",
-                attrs: { role: "status", "aria-hidden": "true" }
-              }),
-              _vm._v("\n                    Loading...\n                ")
-            ]
-          )
-        ])
-      ])
+    return _c("div", { staticClass: "col-8" }, [
+      _c("h3", { staticClass: "mb-0" }, [_vm._v("Мой профиль")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "btn-inner--icon" }, [
+      _c("i", { staticClass: "ni ni-bag-17" })
     ])
   }
 ]
@@ -55648,9 +55668,23 @@ var MicroPanel = new Vue({
         text: message,
         showConfirmButton: false
       });
+    },
+    alertDevelop: function alertDevelop() {
+      this.$swal.fire({
+        icon: 'error',
+        title: 'Упс...',
+        // toast: true,
+        // position: 'top-end',
+        // timer: 2000,
+        // timerProgressBar: true,
+        text: 'Функционал еще в разработке'
+      });
+    },
+    getUrlRoute: function getUrlRoute(route, id) {
+      return '/' + route.replace(/{(.*)}/, id);
     }
   }
-});
+}); // helpers
 
 /***/ }),
 

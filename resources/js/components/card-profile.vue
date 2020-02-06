@@ -5,7 +5,10 @@
                 <div class="card-profile-image">
                     <div>
                         <img @click.prevent="fakeClick" src="https://i.pravatar.cc/800" class="rounded-circle">
-                        <input v-if="!public" id="uploadInput" accept="image/*" type="file" style="display: none"
+                        <input v-if="!public" id="uploadInput"
+                               accept="image/*"
+                               type="file"
+                               style="display: none"
                                @change.prevent="uploadPhoto">
                     </div>
                 </div>
@@ -13,7 +16,7 @@
         </div>
         <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
             <div class="d-flex justify-content-between">
-                <a href="#" class="btn btn-sm btn-info mr-4">Написать</a>
+                <a href="#" @click.prevent="$root.alertDevelop"  class="btn btn-sm btn-info mr-4">Написать</a>
             </div>
         </div>
         <div class="card-body pt-0 pt-md-4">
@@ -53,7 +56,7 @@
                 <p>
                     {{ this.user.profile.about }}
                 </p>
-                <a href="#">Показать мой профиль</a>
+                <a href="#" @click.prevent="$root.alertDevelop">Показать мой профиль</a>
             </div>
         </div>
     </div>
@@ -77,14 +80,18 @@
             },
             uploadPhoto: function (e) {
                 const file = e.target.files[0];
-                let form = new FormData();
+                let form = new FormData(),
+                    url = this.$root.getUrlRoute(
+                        this.$root.config.routes['dashboard.user.uploadPhoto'],
+                        this.$root.config.user.id);
                 form.append('photo', file);
-                axios.post('url', form, {
+
+                axios.post(url, form, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
                 }).then((response) => {
-                    console.log(response);
+                    this.$root.setMessage(response.data.message, response.data.error);
                 }).catch((response) => {
                     console.log(response);
                 });

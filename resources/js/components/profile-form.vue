@@ -6,16 +6,12 @@
                     <h3 class="mb-0">Мой профиль</h3>
                 </div>
                 <div class="col-4 text-right">
-                    <a href="#" class="btn btn-sm btn-primary">
+                    <a href="#" @click.prevent="$root.alertDevelop" class="btn btn-primary">
                         Мои настройки
                     </a>
-                    <button class="btn btn-primary" type="button" disabled>
-                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                        <span class="sr-only">Loading...</span>
-                    </button>
-                    <button class="btn btn-primary" type="button" disabled>
-                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                        Loading...
+                    <button class="btn btn-success" @click="save" type="button">
+                        <span class="btn-inner--icon"><i class="ni ni-bag-17"></i></span>
+                        Сохранить
                     </button>
                 </div>
             </div>
@@ -132,7 +128,9 @@
 
         },
         methods: {
-
+            save: function() {
+                console.log('save action')
+            }
         }
     }
 </script>

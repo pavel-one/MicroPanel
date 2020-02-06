@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Components\Application;
 use App\User;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 class DashboardController extends Controller
 {
@@ -32,8 +36,29 @@ class DashboardController extends Controller
         return view('dashboard.profile');
     }
 
-    public function uploadPhoto(User $user)
+    /**
+     * @param User $user
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function uploadPhoto(User $user, Request $request): JsonResponse
     {
-        return $user->profile->uploadPhoto();
+        if (\Auth::user()->id !== $user->id) {
+            return Application::responseMessage('Хацкер, не балуй', true);
+        }
+
+        /** @var UploadedFile $file */
+        $file = $request->file('photo');
+        if (!$file) {
+            return Application::responseMessage('Нет файла', true);
+        }
+
+        try {
+            $user->profile->uploadPhoto($file);
+        } catch (\Exception $e) {
+            return Application::responseMessage($e->getMessage(), true);
+        }
+
+        return Application::responseMessage('Успешно');
     }
 }

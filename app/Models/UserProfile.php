@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\File;
+use Storage;
 
 /**
  * App\Models\UserProfile
@@ -32,9 +35,17 @@ use Illuminate\Database\Eloquent\Model;
 class UserProfile extends Model
 {
 
+    public $timestamps = false;
+
     public $fillable = [
-        'address', 'city', 'country', 'dob'
+        'address', 'city', 'country', 'dob', 'photo'
     ];
+
+    public const ALLOW_MIMES = [
+        'image/jpeg', 'image/png'
+    ];
+
+    public const DISK_NAME = 'user';
 
     /**
      * Получение возраста
@@ -56,18 +67,60 @@ class UserProfile extends Model
         }
     }
 
-    public function user()
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo('App\User', 'user_id');
     }
 
-    public function uploadPhoto()
+    /**
+     * Загрузка аватарки
+     * @param UploadedFile $file
+     * @return bool
+     * @throws \Exception
+     */
+    public function uploadPhoto(UploadedFile $file): bool
     {
-        return '';
+        $mime = $file->getMimeType();
+        if (!in_array($mime, self::ALLOW_MIMES, true)) {
+            throw new \Exception('Данный тип файлов не поддерживается');
+        }
+
+        if (Storage::disk(self::DISK_NAME)->putFileAs($this->id, $file, 'avatar.jpg') === false) {
+            throw new \Exception('Загрузка файла не удалась');
+        }
+
+        $patch = Storage::disk('user')->getAdapter()->applyPathPrefix('1/avatar.jpg');
+
+        \Image::make($patch)->fit(400, 400)->save($patch, 80, 'jpg');
+
+        $this->photo = $this->id.'/avatar.jpg';
+
+        return $this->save();
     }
 
+    /**
+     * TODO: Получить фото
+     * @return string
+     */
     public function getPhoto()
     {
-        return '';
+        if (!$this->photo) {
+            throw new \Exception('Не найдено фото');
+        }
+        $patch = Storage::disk('user')->getAdapter()->applyPathPrefix($this->photo);
+        $file = File::get($patch);
+        $mime = File::mimeType($patch);
+//        return  File::mimeType($patch);
+        return response($file, 200, [
+            'Content-Type' => $mime
+        ]);
+    }
+
+    /**
+     * TODO: Получить путь к хранилищу
+     */
+    public function getUserStorage()
+    {
+
     }
 }
