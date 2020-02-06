@@ -35,6 +35,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property int $active
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereActive($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereSudo($value)
+ * @property string $middle_name
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserProfile[] $profile
+ * @property-read int|null $profile_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereMiddleName($value)
  */
 class User extends Authenticatable
 {
@@ -44,7 +48,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password', 'active'
+        'name', 'middle_name', 'username', 'email', 'password', 'active'
     ];
 
     /**
@@ -64,4 +68,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function profile()
+    {
+        return $this->hasOne('App\Models\UserProfile', 'id');
+    }
 }

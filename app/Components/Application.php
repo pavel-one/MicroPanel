@@ -36,7 +36,9 @@ class Application
     {
         $out = [];
         if (Auth::check()) {
-            $out = Auth::getUser()->toArray();
+            $user = Auth::getUser();
+            $out = $user->toArray();
+            $out['profile'] = $user->profile->toArray();
         }
         return $out;
     }
