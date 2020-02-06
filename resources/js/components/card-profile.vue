@@ -3,9 +3,11 @@
         <div class="row justify-content-center">
             <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                    <a href="#">
-                        <img src="https://i.pravatar.cc/800" class="rounded-circle">
-                    </a>
+                    <div>
+                        <img @click.prevent="fakeClick" src="https://i.pravatar.cc/800" class="rounded-circle">
+                        <input v-if="!public" id="uploadInput" accept="image/*" type="file" style="display: none"
+                               @change.prevent="uploadPhoto">
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,10 +41,13 @@
             </div>
             <div class="text-center">
                 <h3>
-                    {{ this.user.name }} {{ this.user.middle_name }}<span class="font-weight-light">, 23</span>
+                    {{ this.user.name }} {{ this.user.middle_name }}
+                    <span class="font-weight-light">
+                        {{ this.user.age ? ', '+this.user.age : '' }}
+                    </span>
                 </h3>
                 <div class="h5 font-weight-300">
-                    <i class="ni location_pin mr-2"></i>Ростов-на-Дону, Россия
+                    <i class="ni location_pin mr-2"></i>{{ this.user.city }}, {{ this.user.country }}
                 </div>
                 <hr class="my-4">
                 <p>
@@ -60,15 +65,33 @@
 
         data() {
             return {
-                public: false,
+                public: false, //TODO: Смена
             }
         },
         mounted() {
-            console.log(this.user);
+            // console.log(this.user);
         },
         methods: {
             changePublic: function () {
                 this.public = !this.public;
+            },
+            uploadPhoto: function (e) {
+                const file = e.target.files[0];
+                let form = new FormData();
+                form.append('photo', file);
+                axios.post('url', form, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }).then((response) => {
+                    console.log(response);
+                }).catch((response) => {
+                    console.log(response);
+                });
+            },
+            fakeClick: function () {
+                if (this.public) return '';
+                document.getElementById('uploadInput').click();
             }
         }
     }

@@ -37,8 +37,11 @@ class Application
         $out = [];
         if (Auth::check()) {
             $user = Auth::getUser();
-            $out = $user->toArray();
-            $out['profile'] = $user->profile->toArray();
+            $profile = $user->profile;
+            $out = array_merge($user->toArray(), [
+                'age' => $user->profile->getAge()
+            ]);
+            $out['profile'] = $profile->toArray();
         }
         return $out;
     }
@@ -81,6 +84,6 @@ class Application
             $out[] = $menu;
         }
 
-        return  $out;
+        return $out;
     }
 }

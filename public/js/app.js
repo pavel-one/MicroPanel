@@ -1964,19 +1964,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
     return {
-      "public": false
+      "public": false //TODO: Смена
+
     };
   },
-  mounted: function mounted() {
-    console.log(this.user);
+  mounted: function mounted() {// console.log(this.user);
   },
   methods: {
     changePublic: function changePublic() {
       this["public"] = !this["public"];
+    },
+    uploadPhoto: function uploadPhoto(e) {
+      var file = e.target.files[0];
+      var form = new FormData();
+      form.append('photo', file);
+      axios.post('url', form, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (response) {
+        console.log(response);
+      });
+    },
+    fakeClick: function fakeClick() {
+      if (this["public"]) return '';
+      document.getElementById('uploadInput').click();
     }
   }
 });
@@ -37977,12 +38000,42 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card card-profile shadow" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-lg-3 order-lg-2" }, [
+        _c("div", { staticClass: "card-profile-image" }, [
+          _c("div", [
+            _c("img", {
+              staticClass: "rounded-circle",
+              attrs: { src: "https://i.pravatar.cc/800" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.fakeClick($event)
+                }
+              }
+            }),
+            _vm._v(" "),
+            !_vm.public
+              ? _c("input", {
+                  staticStyle: { display: "none" },
+                  attrs: { id: "uploadInput", accept: "image/*", type: "file" },
+                  on: {
+                    change: function($event) {
+                      $event.preventDefault()
+                      return _vm.uploadPhoto($event)
+                    }
+                  }
+                })
+              : _vm._e()
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
     _c("div", { staticClass: "card-body pt-0 pt-md-4" }, [
-      _vm._m(2),
+      _vm._m(1),
       _vm._v(" "),
       _c("div", { staticClass: "text-center" }, [
         _c("h3", [
@@ -37990,12 +38043,27 @@ var render = function() {
             "\n                " +
               _vm._s(this.user.name) +
               " " +
-              _vm._s(this.user.middle_name)
+              _vm._s(this.user.middle_name) +
+              "\n                "
           ),
-          _c("span", { staticClass: "font-weight-light" }, [_vm._v(", 23")])
+          _c("span", { staticClass: "font-weight-light" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(this.user.age ? ", " + this.user.age : "") +
+                "\n                "
+            )
+          ])
         ]),
         _vm._v(" "),
-        _vm._m(3),
+        _c("div", { staticClass: "h5 font-weight-300" }, [
+          _c("i", { staticClass: "ni location_pin mr-2" }),
+          _vm._v(
+            _vm._s(this.user.city) +
+              ", " +
+              _vm._s(this.user.country) +
+              "\n            "
+          )
+        ]),
         _vm._v(" "),
         _c("hr", { staticClass: "my-4" }),
         _vm._v(" "),
@@ -38011,23 +38079,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-lg-3 order-lg-2" }, [
-        _c("div", { staticClass: "card-profile-image" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("img", {
-              staticClass: "rounded-circle",
-              attrs: { src: "https://i.pravatar.cc/800" }
-            })
-          ])
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -38088,15 +38139,6 @@ var staticRenderFns = [
           ]
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "h5 font-weight-300" }, [
-      _c("i", { staticClass: "ni location_pin mr-2" }),
-      _vm._v("Ростов-на-Дону, Россия\n            ")
     ])
   }
 ]

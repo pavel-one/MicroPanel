@@ -35,6 +35,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', CheckActive::cla
     Route::get('profile', 'DashboardController@profile')
         ->name('dashboard.profile');
 
+    Route::post('user-upload/photo/{user}', 'DashboardController@uploadPhoto')
+        ->name('dashboard.user.uploadPhoto');
 
 });
 

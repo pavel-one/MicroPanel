@@ -32,8 +32,42 @@ use Illuminate\Database\Eloquent\Model;
 class UserProfile extends Model
 {
 
+    public $fillable = [
+        'address', 'city', 'country', 'dob'
+    ];
+
+    /**
+     * Получение возраста
+     * @return int|void
+     */
+    public function getAge()
+    {
+        if (!$this->dob) {
+            return;
+        }
+        $dobArr = explode('-', $this->dob);
+        $y = $dobArr[0];
+        $m = $dobArr[1];
+        $d = $dobArr[2];
+        if ($m > date('m') || $m == date('m') && $d > date('d')) {
+            return (int)(date('Y') - $y - 1);
+        } else {
+            return (int)(date('Y') - $y);
+        }
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User', 'user_id');
+    }
+
+    public function uploadPhoto()
+    {
+        return '';
+    }
+
+    public function getPhoto()
+    {
+        return '';
     }
 }

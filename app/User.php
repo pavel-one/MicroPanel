@@ -36,7 +36,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereActive($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereSudo($value)
  * @property string $middle_name
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserProfile[] $profile
+ * @property-read \App\Models\UserProfile $profile
  * @property-read int|null $profile_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereMiddleName($value)
  */

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+
 class DashboardController extends Controller
 {
 
@@ -28,5 +30,10 @@ class DashboardController extends Controller
     public function profile()
     {
         return view('dashboard.profile');
+    }
+
+    public function uploadPhoto(User $user)
+    {
+        return $user->profile->uploadPhoto();
     }
 }
