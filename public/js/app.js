@@ -43472,17 +43472,6 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ "./node_modules/vue-notification/dist/index.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/vue-notification/dist/index.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/home/pavel/Works/MicroPanel/node_modules/vue-notification/dist/index.js'");
-
-/***/ }),
-
 /***/ "./node_modules/vue-sweetalert2/dist/index.js":
 /*!****************************************************!*\
   !*** ./node_modules/vue-sweetalert2/dist/index.js ***!
@@ -56663,8 +56652,6 @@ try {
 
 
   __webpack_require__(/*! ./argon-dashboard */ "./resources/js/argon-dashboard.js");
-
-  __webpack_require__(/*! vue-notification */ "./node_modules/vue-notification/dist/index.js");
 } catch (e) {}
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");

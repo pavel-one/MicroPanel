@@ -13,7 +13,6 @@ try {
     // require('/public/template/assets/js/plugins/chart.js/dist/Chart.min.js');
     // require('/public/template/assets/js/plugins/chart.js/dist/Chart.extension');
     require('./argon-dashboard');
-    require('vue-notification');
 } catch (e) {
 }
 
