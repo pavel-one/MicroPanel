@@ -108,7 +108,7 @@
                 }
             },
             setLoad: function (state = true) {
-                this.load = state;
+                // this.load = state; TODO: Вызывает скролл, временно отключил, надо решить
             },
             authLink: function(e) {
                 const id = e.target.dataset.id,

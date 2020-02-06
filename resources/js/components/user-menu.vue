@@ -170,7 +170,15 @@
         watch: {},
         methods: {
             alertDevelop: function () {
-                alert('Функционал в разработке');
+                this.$swal.fire({
+                    icon: 'error',
+                    title: 'Упс...',
+                    // toast: true,
+                    // position: 'top-end',
+                    // timer: 2000,
+                    // timerProgressBar: true,
+                    text: 'Функционал еще в разработке',
+                })
             }
         }
     }

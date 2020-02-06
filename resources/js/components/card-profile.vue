@@ -41,17 +41,17 @@
             </div>
             <div class="text-center">
                 <h3>
-                    {{ this.user.name }} {{ this.user.middle_name }}
+                    {{ this.user.profile.name }} {{ this.user.profile.middle_name }}
                     <span class="font-weight-light">
-                        {{ this.user.age ? ', '+this.user.age : '' }}
+                        {{ this.user.profile.age ? ', '+this.user.profile.age : '' }}
                     </span>
                 </h3>
                 <div class="h5 font-weight-300">
-                    <i class="ni location_pin mr-2"></i>{{ this.user.city }}, {{ this.user.country }}
+                    <i class="ni location_pin mr-2"></i>{{ this.user.profile.city }}, {{ this.user.profile.country }}
                 </div>
                 <hr class="my-4">
                 <p>
-                    Клиент пришел от Влада Одинцова
+                    {{ this.user.profile.about }}
                 </p>
                 <a href="#">Показать мой профиль</a>
             </div>
