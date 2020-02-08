@@ -4,7 +4,9 @@
             <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                     <div>
-                        <img @click.prevent="fakeClick" src="https://i.pravatar.cc/800" class="rounded-circle">
+                        <img @click.prevent="fakeClick"
+                             :src="this.$root.UserPhoto"
+                             class="rounded-circle">
                         <input v-if="!public" id="uploadInput"
                                accept="image/*"
                                type="file"
@@ -16,7 +18,7 @@
         </div>
         <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
             <div class="d-flex justify-content-between">
-                <a href="#" @click.prevent="$root.alertDevelop"  class="btn btn-sm btn-info mr-4">Написать</a>
+                <a href="#" @click.prevent="$root.alertDevelop" class="btn btn-sm btn-info mr-4">Написать</a>
             </div>
         </div>
         <div class="card-body pt-0 pt-md-4">
@@ -43,18 +45,19 @@
                 </div>
             </div>
             <div class="text-center">
-                <h3>
-                    {{ this.user.profile.name }} {{ this.user.profile.middle_name }}
+                <h3>@{{user.username}}</h3>
+                <h4>
+                    {{ user.name }} {{ user.middle_name }}
                     <span class="font-weight-light">
-                        {{ this.user.profile.age ? ', '+this.user.profile.age : '' }}
+                        {{ user.age ? ', '+user.age : '' }}
                     </span>
-                </h3>
+                </h4>
                 <div class="h5 font-weight-300">
-                    <i class="ni location_pin mr-2"></i>{{ this.user.profile.city }}, {{ this.user.profile.country }}
+                    <i class="ni location_pin mr-2"></i>{{ user.profile.city }} {{ user.profile.country ? ', '+user.profile.country : '' }}
                 </div>
                 <hr class="my-4">
                 <p>
-                    {{ this.user.profile.about }}
+                    {{ user.profile.about }}
                 </p>
                 <a href="#" @click.prevent="$root.alertDevelop">Показать мой профиль</a>
             </div>
@@ -72,7 +75,6 @@
             }
         },
         mounted() {
-            // console.log(this.user);
         },
         methods: {
             changePublic: function () {
@@ -92,6 +94,9 @@
                     }
                 }).then((response) => {
                     this.$root.setMessage(response.data.message, response.data.error);
+                    this.$root.updateConfig();
+                    let timestamp = new Date().getTime();
+                    this.$root.UserPhoto = this.$root.UserPhoto + '?new='.timestamp;
                 }).catch((response) => {
                     console.log(response);
                 });

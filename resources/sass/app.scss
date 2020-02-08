@@ -4,7 +4,46 @@
 .navbar-search {
     .input-group {
         border: none;
-        background: rgba(255,255,255,.9);
+        background: rgba(255, 255, 255, .9);
+    }
+}
+
+.table-photo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    img {
+        display: block;
+        max-width: 70px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+}
+
+input {
+    border: 1px solid transparent;
+    transition: .25s;
+
+    &.isInvalid {
+        border: 1px solid #fb6340;
+    }
+}
+
+.form-group {
+    .errors-wrapper {
+        font-size: .7em;
+        margin-top: 2px;
+
+        .error-item {
+            color: #fb6340
+        }
+    }
+}
+
+.card-profile-image {
+    img {
+        cursor: pointer;
     }
 }
 

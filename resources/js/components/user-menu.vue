@@ -20,7 +20,9 @@
                         <div class="row align-items-center">
                             <div class="col-auto">
                                 <!-- Avatar -->
-                                <img alt="Image placeholder" src="https://i.pravatar.cc/48" class="avatar rounded-circle">
+                                <img alt="Image placeholder"
+                                     :src="this.$root.UserPhoto"
+                                     class="avatar rounded-circle">
                             </div>
                             <div class="col ml--2">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -39,7 +41,9 @@
                         <div class="row align-items-center">
                             <div class="col-auto">
                                 <!-- Avatar -->
-                                <img alt="Image placeholder" src="https://i.pravatar.cc/48" class="avatar rounded-circle">
+                                <img alt="Image placeholder"
+                                     :src="this.$root.UserPhoto"
+                                     class="avatar rounded-circle">
                             </div>
                             <div class="col ml--2">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -58,7 +62,9 @@
                         <div class="row align-items-center">
                             <div class="col-auto">
                                 <!-- Avatar -->
-                                <img alt="Image placeholder" src="https://i.pravatar.cc/48" class="avatar rounded-circle">
+                                <img alt="Image placeholder"
+                                     :src="this.$root.UserPhoto"
+                                     class="avatar rounded-circle">
                             </div>
                             <div class="col ml--2">
                                 <div class="d-flex justify-content-between align-items-center">
@@ -125,7 +131,7 @@
                aria-expanded="false">
                 <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="/template/assets/img/theme/team-4-800x800.jpg">
+                  <img alt="Image placeholder" :src="this.$root.UserPhoto">
                 </span>
                     <div class="media-body ml-2 d-none d-lg-block">
                         <span class="mb-0 text-sm  font-weight-bold">{{ this.$root.config.user.name }}</span>

@@ -89,7 +89,7 @@ class UserProfile extends Model
             throw new \Exception('Загрузка файла не удалась');
         }
 
-        $patch = Storage::disk('user')->getAdapter()->applyPathPrefix('1/avatar.jpg');
+        $patch = Storage::disk('user')->getAdapter()->applyPathPrefix($this->id.'/avatar.jpg');
 
         \Image::make($patch)->fit(400, 400)->save($patch, 80, 'jpg');
 
@@ -105,7 +105,7 @@ class UserProfile extends Model
     public function getPhoto()
     {
         if (!$this->photo) {
-            throw new \Exception('Не найдено фото');
+            $this->photo = 'no-photo.png';
         }
         $patch = Storage::disk('user')->getAdapter()->applyPathPrefix($this->photo);
         $file = File::get($patch);

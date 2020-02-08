@@ -1972,6 +1972,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
@@ -1980,8 +1983,7 @@ __webpack_require__.r(__webpack_exports__);
 
     };
   },
-  mounted: function mounted() {// console.log(this.user);
-  },
+  mounted: function mounted() {},
   methods: {
     changePublic: function changePublic() {
       this["public"] = !this["public"];
@@ -1999,6 +2001,11 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         _this.$root.setMessage(response.data.message, response.data.error);
+
+        _this.$root.updateConfig();
+
+        var timestamp = new Date().getTime();
+        _this.$root.UserPhoto = _this.$root.UserPhoto + '?new='.timestamp;
       })["catch"](function (response) {
         console.log(response);
       });
@@ -2386,15 +2393,69 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user'],
   data: function data() {
-    return {};
+    return {
+      errors: {}
+    };
   },
   mounted: function mounted() {},
   methods: {
     save: function save() {
-      console.log('save action');
+      var _this = this;
+
+      var url = '/' + this.$root.config.routes['dashboard.user.updateProfile'],
+          data = this.user;
+      axios.post(url, data).then(function (response) {
+        if (response.data.message) _this.$root.setMessage(response.data.message, response.data.error);
+
+        _this.$root.updateConfig();
+      })["catch"](function (error) {
+        var data = error.response.data;
+
+        if (data.errors) {
+          _this.errors = data.errors;
+
+          _this.$root.setMessage('Одно или несколько полей неправильно заполнены', true);
+        }
+      });
     }
   }
 });
@@ -2410,6 +2471,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2605,6 +2672,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -41812,7 +41885,7 @@ var render = function() {
           _c("div", [
             _c("img", {
               staticClass: "rounded-circle",
-              attrs: { src: "https://i.pravatar.cc/800" },
+              attrs: { src: this.$root.UserPhoto },
               on: {
                 click: function($event) {
                   $event.preventDefault()
@@ -41868,20 +41941,20 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "text-center" }, [
-        _c("h3", [
+        _c("h3", [_vm._v("@" + _vm._s(_vm.user.username))]),
+        _vm._v(" "),
+        _c("h4", [
           _vm._v(
             "\n                " +
-              _vm._s(this.user.profile.name) +
+              _vm._s(_vm.user.name) +
               " " +
-              _vm._s(this.user.profile.middle_name) +
+              _vm._s(_vm.user.middle_name) +
               "\n                "
           ),
           _c("span", { staticClass: "font-weight-light" }, [
             _vm._v(
               "\n                    " +
-                _vm._s(
-                  this.user.profile.age ? ", " + this.user.profile.age : ""
-                ) +
+                _vm._s(_vm.user.age ? ", " + _vm.user.age : "") +
                 "\n                "
             )
           ])
@@ -41890,9 +41963,11 @@ var render = function() {
         _c("div", { staticClass: "h5 font-weight-300" }, [
           _c("i", { staticClass: "ni location_pin mr-2" }),
           _vm._v(
-            _vm._s(this.user.profile.city) +
-              ", " +
-              _vm._s(this.user.profile.country) +
+            _vm._s(_vm.user.profile.city) +
+              " " +
+              _vm._s(
+                _vm.user.profile.country ? ", " + _vm.user.profile.country : ""
+              ) +
               "\n            "
           )
         ]),
@@ -41902,7 +41977,7 @@ var render = function() {
         _c("p", [
           _vm._v(
             "\n                " +
-              _vm._s(this.user.profile.about) +
+              _vm._s(_vm.user.profile.about) +
               "\n            "
           )
         ]),
@@ -42472,244 +42547,481 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
-      _c("form", [
-        _c("h6", { staticClass: "heading-small text-muted mb-4" }, [
-          _vm._v("Основная информация")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "pl-lg-4" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-6" }, [
-              _c("div", { staticClass: "form-group focused" }, [
-                _c(
-                  "label",
+      _c("h6", { staticClass: "heading-small text-muted mb-4" }, [
+        _vm._v("Основная информация")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "pl-lg-4" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-6" }, [
+            _c("div", { staticClass: "form-group " }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-control-label",
+                  attrs: { for: "input-username" }
+                },
+                [_vm._v("Логин")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
                   {
-                    staticClass: "form-control-label",
-                    attrs: { for: "input-username" }
-                  },
-                  [_vm._v("Логин")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control form-control-alternative",
-                  attrs: {
-                    type: "text",
-                    id: "input-username",
-                    placeholder: "Ваш логин"
-                  },
-                  domProps: { value: _vm.user.username }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-6" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-control-label",
-                    attrs: { for: "input-email" }
-                  },
-                  [_vm._v("Email адресс")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control form-control-alternative",
-                  attrs: {
-                    type: "email",
-                    id: "input-email",
-                    placeholder: "vasya@mail.ru"
-                  },
-                  domProps: { value: _vm.user.email }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-6" }, [
-              _c("div", { staticClass: "form-group focused" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-control-label",
-                    attrs: { for: "input-first-name" }
-                  },
-                  [_vm._v("Имя")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control form-control-alternative",
-                  attrs: {
-                    type: "text",
-                    id: "input-first-name",
-                    placeholder: "Ваше имя"
-                  },
-                  domProps: { value: _vm.user.name }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-6" }, [
-              _c("div", { staticClass: "form-group focused" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-control-label",
-                    attrs: { for: "input-last-name" }
-                  },
-                  [_vm._v("Отчество")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control form-control-alternative",
-                  attrs: {
-                    type: "text",
-                    id: "input-last-name",
-                    placeholder: "Ваше отчество"
-                  },
-                  domProps: { value: _vm.user.middle_name }
-                })
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("hr", { staticClass: "my-4" }),
-        _vm._v(" "),
-        _c("h6", { staticClass: "heading-small text-muted mb-4" }, [
-          _vm._v("Контактная информация")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "pl-lg-4" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-12" }, [
-              _c("div", { staticClass: "form-group focused" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-control-label",
-                    attrs: { for: "input-address" }
-                  },
-                  [_vm._v("Адрес")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control form-control-alternative",
-                  attrs: {
-                    id: "input-address",
-                    placeholder: "Ваш адрес",
-                    type: "text"
-                  },
-                  domProps: { value: _vm.user.profile.address }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-4" }, [
-              _c("div", { staticClass: "form-group focused" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-control-label",
-                    attrs: { for: "input-city" }
-                  },
-                  [_vm._v("Город")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control form-control-alternative",
-                  attrs: {
-                    type: "text",
-                    id: "input-city",
-                    placeholder: "Город"
-                  },
-                  domProps: { value: _vm.user.profile.city }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4" }, [
-              _c("div", { staticClass: "form-group focused" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-control-label",
-                    attrs: { for: "input-country" }
-                  },
-                  [_vm._v("Страна")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control form-control-alternative",
-                  attrs: {
-                    type: "text",
-                    id: "input-country",
-                    placeholder: "Страна"
-                  },
-                  domProps: { value: _vm.user.profile.country }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4" }, [
-              _c("div", { staticClass: "form-group focused" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-control-label",
-                    attrs: { for: "input-dob" }
-                  },
-                  [_vm._v("Дата рождения")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control form-control-alternative",
-                  attrs: {
-                    type: "date",
-                    id: "input-dob",
-                    placeholder: "15.11.1993"
-                  },
-                  domProps: { value: _vm.user.profile.dob }
-                })
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("hr", { staticClass: "my-4" }),
-        _vm._v(" "),
-        _c("h6", { staticClass: "heading-small text-muted mb-4" }, [
-          _vm._v("Прочая информация")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "pl-lg-4" }, [
-          _c("div", { staticClass: "form-group focused" }, [
-            _c("label", [_vm._v("Обо мне")]),
-            _vm._v(" "),
-            _c(
-              "textarea",
-              {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.username,
+                    expression: "user.username"
+                  }
+                ],
                 staticClass: "form-control form-control-alternative",
+                class: { isInvalid: _vm.errors.username },
                 attrs: {
-                  readonly: "",
-                  rows: "4",
-                  placeholder: "Дополнительная информация"
+                  type: "text",
+                  id: "input-username",
+                  placeholder: "Ваш логин"
+                },
+                domProps: { value: _vm.user.username },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.user, "username", $event.target.value)
+                  }
                 }
-              },
-              [
-                _vm._v(
-                  "                        " +
-                    _vm._s(_vm.user.profile.about) +
-                    "\n                    "
-                )
-              ]
-            )
+              }),
+              _vm._v(" "),
+              _vm.errors.username
+                ? _c(
+                    "div",
+                    { staticClass: "errors-wrapper" },
+                    _vm._l(_vm.errors.username, function(error) {
+                      return _c("div", { staticClass: "error-item" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(error) +
+                            "\n                            "
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                : _vm._e()
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-control-label",
+                  attrs: { for: "input-email" }
+                },
+                [_vm._v("Email адресс")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.email,
+                    expression: "user.email"
+                  }
+                ],
+                staticClass: "form-control form-control-alternative",
+                class: { isInvalid: _vm.errors.email },
+                attrs: {
+                  type: "email",
+                  id: "input-email",
+                  placeholder: "vasya@mail.ru"
+                },
+                domProps: { value: _vm.user.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.user, "email", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors.email
+                ? _c(
+                    "div",
+                    { staticClass: "errors-wrapper" },
+                    _vm._l(_vm.errors.email, function(error) {
+                      return _c("div", { staticClass: "error-item" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(error) +
+                            "\n                            "
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                : _vm._e()
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-6" }, [
+            _c("div", { staticClass: "form-group " }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-control-label",
+                  attrs: { for: "input-first-name" }
+                },
+                [_vm._v("Имя")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.name,
+                    expression: "user.name"
+                  }
+                ],
+                staticClass: "form-control form-control-alternative",
+                class: { isInvalid: _vm.errors.name },
+                attrs: {
+                  type: "text",
+                  id: "input-first-name",
+                  placeholder: "Ваше имя"
+                },
+                domProps: { value: _vm.user.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.user, "name", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors.name
+                ? _c(
+                    "div",
+                    { staticClass: "errors-wrapper" },
+                    _vm._l(_vm.errors.name, function(error) {
+                      return _c("div", { staticClass: "error-item" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(error) +
+                            "\n                            "
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                : _vm._e()
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-6" }, [
+            _c("div", { staticClass: "form-group " }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-control-label",
+                  attrs: { for: "input-last-name" }
+                },
+                [_vm._v("Отчество")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.middle_name,
+                    expression: "user.middle_name"
+                  }
+                ],
+                staticClass: "form-control form-control-alternative",
+                class: { isInvalid: _vm.errors.middle_name },
+                attrs: {
+                  type: "text",
+                  id: "input-last-name",
+                  placeholder: "Ваше отчество"
+                },
+                domProps: { value: _vm.user.middle_name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.user, "middle_name", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors.middle_name
+                ? _c(
+                    "div",
+                    { staticClass: "errors-wrapper" },
+                    _vm._l(_vm.errors.middle_name, function(error) {
+                      return _c("div", { staticClass: "error-item" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(error) +
+                            "\n                            "
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                : _vm._e()
+            ])
           ])
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _c("hr", { staticClass: "my-4" }),
+      _vm._v(" "),
+      _c("h6", { staticClass: "heading-small text-muted mb-4" }, [
+        _vm._v("Контактная информация")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "pl-lg-4" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c("div", { staticClass: "form-group " }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-control-label",
+                  attrs: { for: "input-address" }
+                },
+                [_vm._v("Адрес")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.profile.address,
+                    expression: "user.profile.address"
+                  }
+                ],
+                staticClass: "form-control form-control-alternative",
+                class: { isInvalid: _vm.errors["profile.address"] },
+                attrs: {
+                  id: "input-address",
+                  placeholder: "Ваш адрес",
+                  type: "text"
+                },
+                domProps: { value: _vm.user.profile.address },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.user.profile, "address", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors["profile.address"]
+                ? _c(
+                    "div",
+                    { staticClass: "errors-wrapper" },
+                    _vm._l(_vm.errors["profile.address"], function(error) {
+                      return _c("div", { staticClass: "error-item" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(error) +
+                            "\n                            "
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                : _vm._e()
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-4" }, [
+            _c("div", { staticClass: "form-group " }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-control-label",
+                  attrs: { for: "input-city" }
+                },
+                [_vm._v("Город")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.profile.city,
+                    expression: "user.profile.city"
+                  }
+                ],
+                staticClass: "form-control form-control-alternative",
+                class: { isInvalid: _vm.errors["profile.city"] },
+                attrs: { type: "text", id: "input-city", placeholder: "Город" },
+                domProps: { value: _vm.user.profile.city },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.user.profile, "city", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors["profile.city"]
+                ? _c(
+                    "div",
+                    { staticClass: "errors-wrapper" },
+                    _vm._l(_vm.errors["profile.city"], function(error) {
+                      return _c("div", { staticClass: "error-item" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(error) +
+                            "\n                            "
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                : _vm._e()
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4" }, [
+            _c("div", { staticClass: "form-group " }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-control-label",
+                  attrs: { for: "input-country" }
+                },
+                [_vm._v("Страна")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.profile.country,
+                    expression: "user.profile.country"
+                  }
+                ],
+                staticClass: "form-control form-control-alternative",
+                class: { isInvalid: _vm.errors["profile.country"] },
+                attrs: {
+                  type: "text",
+                  id: "input-country",
+                  placeholder: "Страна"
+                },
+                domProps: { value: _vm.user.profile.country },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.user.profile, "country", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors["profile.country"]
+                ? _c(
+                    "div",
+                    { staticClass: "errors-wrapper" },
+                    _vm._l(_vm.errors["profile.country"], function(error) {
+                      return _c("div", { staticClass: "error-item" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(error) +
+                            "\n                            "
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                : _vm._e()
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4" }, [
+            _c("div", { staticClass: "form-group " }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-control-label",
+                  attrs: { for: "input-dob" }
+                },
+                [_vm._v("Дата рождения")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.profile.dob,
+                    expression: "user.profile.dob"
+                  }
+                ],
+                staticClass: "form-control form-control-alternative",
+                class: { isInvalid: _vm.errors["profile.dob"] },
+                attrs: {
+                  type: "date",
+                  id: "input-dob",
+                  placeholder: "15.11.1993"
+                },
+                domProps: { value: _vm.user.profile.dob },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.user.profile, "dob", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors["profile.dob"]
+                ? _c(
+                    "div",
+                    { staticClass: "errors-wrapper" },
+                    _vm._l(_vm.errors["profile.dob"], function(error) {
+                      return _c("div", { staticClass: "error-item" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(error) +
+                            "\n                            "
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                : _vm._e()
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr", { staticClass: "my-4" })
     ])
   ])
 }
@@ -42756,7 +43068,105 @@ var render = function() {
     "ul",
     { staticClass: "navbar-nav align-items-center d-none d-md-flex" },
     [
-      _vm._m(0),
+      _c("li", { staticClass: "nav-item dropdown" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "dropdown-menu dropdown-menu-xl dropdown-menu-right py-0 overflow-hidden"
+          },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "list-group list-group-flush" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "list-group-item list-group-item-action",
+                  attrs: { href: "#" }
+                },
+                [
+                  _c("div", { staticClass: "row align-items-center" }, [
+                    _c("div", { staticClass: "col-auto" }, [
+                      _c("img", {
+                        staticClass: "avatar rounded-circle",
+                        attrs: {
+                          alt: "Image placeholder",
+                          src: this.$root.UserPhoto
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "list-group-item list-group-item-action",
+                  attrs: { href: "#" }
+                },
+                [
+                  _c("div", { staticClass: "row align-items-center" }, [
+                    _c("div", { staticClass: "col-auto" }, [
+                      _c("img", {
+                        staticClass: "avatar rounded-circle",
+                        attrs: {
+                          alt: "Image placeholder",
+                          src: this.$root.UserPhoto
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(3)
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "list-group-item list-group-item-action",
+                  attrs: { href: "#" }
+                },
+                [
+                  _c("div", { staticClass: "row align-items-center" }, [
+                    _c("div", { staticClass: "col-auto" }, [
+                      _c("img", {
+                        staticClass: "avatar rounded-circle",
+                        attrs: {
+                          alt: "Image placeholder",
+                          src: this.$root.UserPhoto
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(4)
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(5),
+              _vm._v(" "),
+              _vm._m(6)
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass:
+                  "dropdown-item text-center text-primary font-weight-bold py-3",
+                attrs: { href: "#" }
+              },
+              [_vm._v("Показать все")]
+            )
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c("li", { staticClass: "nav-item dropdown" }, [
         _c(
@@ -42773,7 +43183,11 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "media align-items-center" }, [
-              _vm._m(1),
+              _c("span", { staticClass: "avatar avatar-sm rounded-circle" }, [
+                _c("img", {
+                  attrs: { alt: "Image placeholder", src: this.$root.UserPhoto }
+                })
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "media-body ml-2 d-none d-lg-block" }, [
                 _c("span", { staticClass: "mb-0 text-sm  font-weight-bold" }, [
@@ -42874,294 +43288,202 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item dropdown" }, [
-      _c(
-        "a",
-        {
-          staticClass: "nav-link",
-          attrs: {
-            href: "#",
-            role: "button",
-            "data-toggle": "dropdown",
-            "aria-haspopup": "true",
-            "aria-expanded": "false"
-          }
-        },
-        [_c("i", { staticClass: "ni ni-bell-55" })]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "dropdown-menu dropdown-menu-xl dropdown-menu-right py-0 overflow-hidden"
-        },
-        [
-          _c("div", { staticClass: "px-3 py-3" }, [
-            _c("h6", { staticClass: "text-sm text-muted m-0" }, [
-              _vm._v("You have "),
-              _c("strong", { staticClass: "text-primary" }, [_vm._v("13")]),
-              _vm._v(" notifications.")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "list-group list-group-flush" }, [
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: { href: "#" }
-              },
-              [
-                _c("div", { staticClass: "row align-items-center" }, [
-                  _c("div", { staticClass: "col-auto" }, [
-                    _c("img", {
-                      staticClass: "avatar rounded-circle",
-                      attrs: {
-                        alt: "Image placeholder",
-                        src: "https://i.pravatar.cc/48"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col ml--2" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex justify-content-between align-items-center"
-                      },
-                      [
-                        _c("div", [
-                          _c("h4", { staticClass: "mb-0 text-sm" }, [
-                            _vm._v("John Snow")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "text-right text-muted" }, [
-                          _c("small", [_vm._v("2 hrs ago")])
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "text-sm mb-0" }, [
-                      _vm._v("Let's meet at Starbucks at 11:30. Wdyt?")
-                    ])
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: { href: "#" }
-              },
-              [
-                _c("div", { staticClass: "row align-items-center" }, [
-                  _c("div", { staticClass: "col-auto" }, [
-                    _c("img", {
-                      staticClass: "avatar rounded-circle",
-                      attrs: {
-                        alt: "Image placeholder",
-                        src: "https://i.pravatar.cc/48"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col ml--2" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex justify-content-between align-items-center"
-                      },
-                      [
-                        _c("div", [
-                          _c("h4", { staticClass: "mb-0 text-sm" }, [
-                            _vm._v("John Snow")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "text-right text-muted" }, [
-                          _c("small", [_vm._v("3 hrs ago")])
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "text-sm mb-0" }, [
-                      _vm._v("A new issue has been reported for Argon.")
-                    ])
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: { href: "#" }
-              },
-              [
-                _c("div", { staticClass: "row align-items-center" }, [
-                  _c("div", { staticClass: "col-auto" }, [
-                    _c("img", {
-                      staticClass: "avatar rounded-circle",
-                      attrs: {
-                        alt: "Image placeholder",
-                        src: "https://i.pravatar.cc/48"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col ml--2" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex justify-content-between align-items-center"
-                      },
-                      [
-                        _c("div", [
-                          _c("h4", { staticClass: "mb-0 text-sm" }, [
-                            _vm._v("John Snow")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "text-right text-muted" }, [
-                          _c("small", [_vm._v("5 hrs ago")])
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "text-sm mb-0" }, [
-                      _vm._v("Your posts have been liked a lot.")
-                    ])
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: { href: "#" }
-              },
-              [
-                _c("div", { staticClass: "row align-items-center" }, [
-                  _c("div", { staticClass: "col-auto" }, [
-                    _c("img", {
-                      staticClass: "avatar rounded-circle",
-                      attrs: {
-                        alt: "Image placeholder",
-                        src: "https://i.pravatar.cc/48"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col ml--2" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex justify-content-between align-items-center"
-                      },
-                      [
-                        _c("div", [
-                          _c("h4", { staticClass: "mb-0 text-sm" }, [
-                            _vm._v("John Snow")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "text-right text-muted" }, [
-                          _c("small", [_vm._v("2 hrs ago")])
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "text-sm mb-0" }, [
-                      _vm._v("Let's meet at Starbucks at 11:30. Wdyt?")
-                    ])
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: { href: "#" }
-              },
-              [
-                _c("div", { staticClass: "row align-items-center" }, [
-                  _c("div", { staticClass: "col-auto" }, [
-                    _c("img", {
-                      staticClass: "avatar rounded-circle",
-                      attrs: {
-                        alt: "Image placeholder",
-                        src: "https://i.pravatar.cc/48"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col ml--2" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex justify-content-between align-items-center"
-                      },
-                      [
-                        _c("div", [
-                          _c("h4", { staticClass: "mb-0 text-sm" }, [
-                            _vm._v("John Snow")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "text-right text-muted" }, [
-                          _c("small", [_vm._v("3 hrs ago")])
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "text-sm mb-0" }, [
-                      _vm._v("A new issue has been reported for Argon.")
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "dropdown-item text-center text-primary font-weight-bold py-3",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Показать все")]
-          )
-        ]
-      )
+    return _c(
+      "a",
+      {
+        staticClass: "nav-link",
+        attrs: {
+          href: "#",
+          role: "button",
+          "data-toggle": "dropdown",
+          "aria-haspopup": "true",
+          "aria-expanded": "false"
+        }
+      },
+      [_c("i", { staticClass: "ni ni-bell-55" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "px-3 py-3" }, [
+      _c("h6", { staticClass: "text-sm text-muted m-0" }, [
+        _vm._v("You have "),
+        _c("strong", { staticClass: "text-primary" }, [_vm._v("13")]),
+        _vm._v(" notifications.")
+      ])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "avatar avatar-sm rounded-circle" }, [
-      _c("img", {
-        attrs: {
-          alt: "Image placeholder",
-          src: "/template/assets/img/theme/team-4-800x800.jpg"
-        }
-      })
+    return _c("div", { staticClass: "col ml--2" }, [
+      _c(
+        "div",
+        { staticClass: "d-flex justify-content-between align-items-center" },
+        [
+          _c("div", [
+            _c("h4", { staticClass: "mb-0 text-sm" }, [_vm._v("John Snow")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "text-right text-muted" }, [
+            _c("small", [_vm._v("2 hrs ago")])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("p", { staticClass: "text-sm mb-0" }, [
+        _vm._v("Let's meet at Starbucks at 11:30. Wdyt?")
+      ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col ml--2" }, [
+      _c(
+        "div",
+        { staticClass: "d-flex justify-content-between align-items-center" },
+        [
+          _c("div", [
+            _c("h4", { staticClass: "mb-0 text-sm" }, [_vm._v("John Snow")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "text-right text-muted" }, [
+            _c("small", [_vm._v("3 hrs ago")])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("p", { staticClass: "text-sm mb-0" }, [
+        _vm._v("A new issue has been reported for Argon.")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col ml--2" }, [
+      _c(
+        "div",
+        { staticClass: "d-flex justify-content-between align-items-center" },
+        [
+          _c("div", [
+            _c("h4", { staticClass: "mb-0 text-sm" }, [_vm._v("John Snow")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "text-right text-muted" }, [
+            _c("small", [_vm._v("5 hrs ago")])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("p", { staticClass: "text-sm mb-0" }, [
+        _vm._v("Your posts have been liked a lot.")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "list-group-item list-group-item-action",
+        attrs: { href: "#" }
+      },
+      [
+        _c("div", { staticClass: "row align-items-center" }, [
+          _c("div", { staticClass: "col-auto" }, [
+            _c("img", {
+              staticClass: "avatar rounded-circle",
+              attrs: {
+                alt: "Image placeholder",
+                src: "https://i.pravatar.cc/48"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col ml--2" }, [
+            _c(
+              "div",
+              {
+                staticClass: "d-flex justify-content-between align-items-center"
+              },
+              [
+                _c("div", [
+                  _c("h4", { staticClass: "mb-0 text-sm" }, [
+                    _vm._v("John Snow")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "text-right text-muted" }, [
+                  _c("small", [_vm._v("2 hrs ago")])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-sm mb-0" }, [
+              _vm._v("Let's meet at Starbucks at 11:30. Wdyt?")
+            ])
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "list-group-item list-group-item-action",
+        attrs: { href: "#" }
+      },
+      [
+        _c("div", { staticClass: "row align-items-center" }, [
+          _c("div", { staticClass: "col-auto" }, [
+            _c("img", {
+              staticClass: "avatar rounded-circle",
+              attrs: {
+                alt: "Image placeholder",
+                src: "https://i.pravatar.cc/48"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col ml--2" }, [
+            _c(
+              "div",
+              {
+                staticClass: "d-flex justify-content-between align-items-center"
+              },
+              [
+                _c("div", [
+                  _c("h4", { staticClass: "mb-0 text-sm" }, [
+                    _vm._v("John Snow")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "text-right text-muted" }, [
+                  _c("small", [_vm._v("3 hrs ago")])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-sm mb-0" }, [
+              _vm._v("A new issue has been reported for Argon.")
+            ])
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -43300,6 +43622,21 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("td", [
+                  _c("div", { staticClass: "table-photo" }, [
+                    _c("img", {
+                      staticClass: "shadow",
+                      attrs: {
+                        src: _vm.$root.getUrlRouteName(
+                          "dashboard.user.getphoto",
+                          user.id
+                        ),
+                        alt: ""
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [
                   _vm._v(
                     "\n                " +
                       _vm._s(user.username) +
@@ -43349,6 +43686,8 @@ var staticRenderFns = [
     return _c("thead", { staticClass: "thead-dark" }, [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Фото")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Логин")]),
         _vm._v(" "),
@@ -55641,7 +55980,11 @@ files.keys().map(function (key) {
 var MicroPanel = new Vue({
   el: '#app',
   data: {
-    config: configApp
+    config: configApp,
+    UserPhoto: ''
+  },
+  mounted: function mounted() {
+    this.UserPhoto = this.getUrlRouteName('dashboard.user.getphoto', this.config.user.id);
   },
   methods: {
     setMessage: function setMessage() {
@@ -55671,6 +56014,17 @@ var MicroPanel = new Vue({
     },
     getUrlRoute: function getUrlRoute(route, id) {
       return '/' + route.replace(/{(.*)}/, id);
+    },
+    getUrlRouteName: function getUrlRouteName(route, id) {
+      return '/' + this.config.routes[route].replace(/{(.*)}/, id);
+    },
+    updateConfig: function updateConfig() {
+      var _this = this;
+
+      var url = '/' + this.config.routes['dashboard.user.config'];
+      axios.get(url).then(function (response) {
+        _this.config = response.data;
+      });
     }
   }
 }); // helpers

@@ -38,6 +38,20 @@ if (!function_exists('getMenu')) {
                     'classes' => 'text-red',
                     'link' => route('dashboard.jobs')
                 ],
+                [
+                    'name' => 'Тех.Поддержка',
+                    'sudo' => true,
+                    'icon' => 'ni-badge',
+                    'classes' => 'text-default',
+                    'link' => route('dashboard.jobs')
+                ],
+                [
+                    'name' => 'Оплаты',
+                    'sudo' => true,
+                    'icon' => 'ni-money-coins',
+                    'classes' => 'text-gray',
+                    'link' => route('dashboard.jobs')
+                ],
             ];
         }
 

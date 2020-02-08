@@ -11,6 +11,7 @@
             <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Фото</th>
                 <th scope="col">Логин</th>
                 <th scope="col">Имя</th>
                 <th scope="col">Email</th>
@@ -45,6 +46,11 @@
                         </div>
                     </div>
                 </th>
+                <td>
+                    <div class="table-photo">
+                        <img class="shadow" :src="$root.getUrlRouteName('dashboard.user.getphoto', user.id)" alt="">
+                    </div>
+                </td>
                 <td>
                     {{ user.username }}
                     <span :class="user.active ? 'badge-success' : 'badge-warning'"
