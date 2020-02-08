@@ -2,6 +2,7 @@
 
 namespace App\Components;
 
+use Illuminate\Http\JsonResponse;
 use Route;
 use Auth;
 
@@ -36,7 +37,12 @@ class Application
     {
         $out = [];
         if (Auth::check()) {
-            $out = Auth::getUser()->toArray();
+            $user = Auth::getUser();
+            $profile = $user->profile;
+            $out = array_merge($user->toArray(), [
+                'age' => $user->profile->getAge()
+            ]);
+            $out['profile'] = $profile->toArray();
         }
         return $out;
     }
@@ -79,6 +85,16 @@ class Application
             $out[] = $menu;
         }
 
-        return  $out;
+        return $out;
+    }
+
+    /**
+     * @param string $message
+     * @param bool $error
+     * @return JsonResponse
+     */
+    public static function responseMessage($message = '', $error = false): JsonResponse
+    {
+        return response()->json(['message' => $message, 'error' => $error]);
     }
 }

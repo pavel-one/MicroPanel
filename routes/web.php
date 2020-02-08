@@ -4,6 +4,7 @@ use App\Http\Middleware\CheckActive;
 use App\Http\Middleware\CheckSudo;
 
 Route::get('/', 'PageController@index')->middleware('guest')->name('index');
+Route::get('/test', 'PageController@test');
 
 //Авторизация/Регистрация
 Route::group(['prefix' => 'login', 'middleware' => 'guest'], static function () {
@@ -35,6 +36,17 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', CheckActive::cla
     Route::get('profile', 'DashboardController@profile')
         ->name('dashboard.profile');
 
+    Route::get('photo/{user}', 'DashboardController@getPhoto')
+        ->name('dashboard.user.getphoto');
+
+    Route::get('config', 'DashboardController@config')
+        ->name('dashboard.user.config');
+
+    Route::post('user-upload/photo/{user}', 'DashboardController@uploadPhoto')
+        ->name('dashboard.user.uploadPhoto');
+
+    Route::post('user/update', 'DashboardController@updateProfile')
+        ->name('dashboard.user.updateProfile');
 
 });
 

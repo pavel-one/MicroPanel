@@ -3,3 +3,43 @@
   background: rgba(255, 255, 255, 0.9);
 }
 
+.table-photo {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.table-photo img {
+  display: block;
+  max-width: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+input {
+  border: 1px solid transparent;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+input.isInvalid {
+  border: 1px solid #fb6340;
+}
+
+.form-group .errors-wrapper {
+  font-size: 0.7em;
+  margin-top: 2px;
+}
+
+.form-group .errors-wrapper .error-item {
+  color: #fb6340;
+}
+
+.card-profile-image img {
+  cursor: pointer;
+}
+

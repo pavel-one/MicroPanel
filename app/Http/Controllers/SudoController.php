@@ -41,6 +41,10 @@ class SudoController extends Controller
      */
     public function deleteUser(User $user): JsonResponse
     {
+        if ($user->sudo) {
+            return $this->responseMessage('Нельзя удалить sudo пользователя', true);
+        }
+
         $message = __('dashboard.success');
         $error = false;
 
@@ -59,6 +63,10 @@ class SudoController extends Controller
      */
     public function activeUser(User $user): JsonResponse
     {
+        if ($user->sudo) {
+            return $this->responseMessage('Нельзя деактивировать sudo пользователя', true);
+        }
+
         $message = __('dashboard.success');
         $error = false;
         $flag = !$user->active;
