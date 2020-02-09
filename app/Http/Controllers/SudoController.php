@@ -66,17 +66,7 @@ class SudoController extends Controller
         if ($user->sudo) {
             return $this->responseMessage('Нельзя деактивировать sudo пользователя', true);
         }
-
-        $message = __('dashboard.success');
-        $error = false;
-        $flag = !$user->active;
-
-        if (!$user->update(['active' => $flag])) {
-            $message = __('dashboard.error');
-            $error = true;
-        }
-
-        return $this->responseMessage($message, $error);
+        return $user->activeDeactivation();
     }
 
 

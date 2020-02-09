@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\Registered;
+use App\Events\UserActiveDeactive;
 use App\Listeners\SendEmailRegisterNotification;
+use App\Listeners\UserActiveDeactiveNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
@@ -17,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailRegisterNotification::class
+        ],
+        UserActiveDeactive::class => [
+            UserActiveDeactiveNotification::class
         ]
     ];
 

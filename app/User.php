@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Components\Application;
+use App\Events\UserActiveDeactive;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
@@ -72,5 +74,19 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne('App\Models\UserProfile', 'id');
+    }
+
+    public function activeDeactivation(): \Illuminate\Http\JsonResponse
+    {
+        if ($this->sudo) {
+            return Application::responseMessage('Нельзя деактивировать sudo пользователя', true);
+        }
+        $active = (bool)$this->active;
+
+        $this->update(['active' => !$active]);
+
+        event(new UserActiveDeactive($this));
+
+        return Application::responseMessage(__('dashboard.success'));
     }
 }
