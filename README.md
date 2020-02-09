@@ -7,7 +7,7 @@
 - [x] Авторизация
 - [x] Листинг и управления пользователями для sudo - админа
 - [x] Логирование очередей
-- [ ] Профиль пользователя
+- [x] Профиль пользователя
 - [ ] Внешний профиль пользователя
 - [ ] Техническая поддержка
 - [ ] Уведомления
@@ -30,11 +30,8 @@
 1. `php artisan key:generate`
 1. В .env меняем то что нужно поменять, следуем комментариям
 1. `php artisan migrate --seed`
-1. `php artisan ide-helper:generate`
-1. `php artisan ide-helper:generate`
-1. `php artisan ide-helper:meta`
 1. `npm install`
-1. `npm run dev`
+1. `npm run watch`
 
 ## IDE Helper-commands
 
@@ -66,17 +63,13 @@
 1. Даже после PR можно дополнять коммитами его, но ДО его принятия ревьювером
 
 #### Начинаем новую задачу
-1. `git fetch` - скачиваем ветки и изменения
-1. Переключаемся на мастер
-1. `git pull` - обновляем его
 1. Создаем новую ветку
-1. `composer install`
+1. `git pull origin master` Вливаем в нее изменения из мастера
+1. `composer install` - если были измнения с пакетами
 1. `php artisan migrate:refresh --seed` - полностью перестраеваем бд с сидорами
 
 ## Правила кода
 
-- Если добавили новую artisan - команду, обновляем list `php artisan list > docs/artisan.list`
-- Если добавили новые роуты, перед пушем обновляем роуты `php artisan route:list > docs/route.list`
 - Бизнес - логику храним в сервисах
 - Для логирования используем разные каналы, например если вы разрабатываете модуль оплаты, то канал для его логирования должен называться payment а логи кластся в отдельную папку
 - Модели должны быть рассортированы по папкам
@@ -91,43 +84,3 @@
 
 ## Другое
 
-Конфиг nginx
-```
-server {
-    listen 80;
-    listen [::]:80;
-    server_name    micropanel.local;
-    root  /home/pavel/Works/micropanel/public;
-
-    add_header X-Frame-Options "SAMEORIGIN";
-    add_header X-XSS-Protection "1; mode=block";
-    add_header X-Content-Type-Options "nosniff";
-
-    index index.html index.htm index.php;
-
-    charset utf-8;
-
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
-
-    location = /favicon.ico { access_log off; log_not_found off; }
-    location = /robots.txt  { access_log off; log_not_found off; }
-
-    error_page 404 /index.php;
-
-    location ~ \.php$ {
-        fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-        include fastcgi_params;
-    }
-
-    location ~ /\.(?!well-known).* {
-        deny all;
-    }
-}
-
-
-
-```
