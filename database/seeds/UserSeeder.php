@@ -37,10 +37,10 @@ class UserSeeder extends Seeder
 
         //TODO: Сделать фабрику
         for ($i = 2; $i <= 10; $i++) {
-            $faker = Factory::create();
+            $faker = Factory::create('ru_RU');
             DB::table('users')->insert([
                 'username' => $faker->userName,
-                'name' => $faker->name,
+                'name' => $faker->firstName,
                 'email' => $faker->email,
                 'middle_name' => $faker->lastName,
                 'password' => bcrypt($faker->password),
