@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserProfile;
 use Illuminate\Http\Request;
+use Socialite;
 
 class PageController extends Controller
 {
@@ -14,7 +14,13 @@ class PageController extends Controller
 
     public function test()
     {
-        $profile = UserProfile::find(1)->first();
-        return $profile->getPhoto();
+        return Socialite::with('vkontakte')->redirect();
+    }
+
+    public function test1(Request $request)
+    {
+        $code = $request->get('code');
+        Socialite::driver('vkontakte')->user();
+        dd($code);
     }
 }

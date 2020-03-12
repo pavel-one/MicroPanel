@@ -101,6 +101,7 @@ class UserProfile extends Model
     /**
      * TODO: Получить фото
      * @return string
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function getPhoto()
     {

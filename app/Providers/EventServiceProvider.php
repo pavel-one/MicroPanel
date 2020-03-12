@@ -22,7 +22,11 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserActiveDeactive::class => [
             UserActiveDeactiveNotification::class
-        ]
+        ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            // add your listeners (aka providers) here
+            'SocialiteProviders\\VKontakte\\VKontakteExtendSocialite@handle',
+        ],
     ];
 
     /**
