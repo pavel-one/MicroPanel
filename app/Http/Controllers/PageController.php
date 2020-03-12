@@ -19,8 +19,6 @@ class PageController extends Controller
 
     public function test1(Request $request)
     {
-        $code = $request->get('code');
-        Socialite::driver('vkontakte')->user();
-        dd($code);
+        \Log::error(print_r($request->all(), 1));
     }
 }

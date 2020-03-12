@@ -5,7 +5,7 @@ use App\Http\Middleware\CheckSudo;
 
 Route::get('/', 'PageController@index')->middleware('guest')->name('index');
 Route::get('/test', 'PageController@test');
-Route::get('/test1', 'PageController@test1');
+Route::post('/test1', 'PageController@test1');
 
 //Авторизация/Регистрация
 Route::group(['prefix' => 'login', 'middleware' => 'guest'], static function () {
